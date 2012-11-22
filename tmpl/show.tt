@@ -1,0 +1,14 @@
+[% WRAPPER 'include/layout.tt' %]
+
+<div>
+    <pre class="code prettyprint linenums:1">[% body %]</pre>
+</div>
+<pre>
+run time : [% run_time %] sec
+result   : 
+[% result %]</pre>
+</ul>
+<div>
+<a href="/">back</a>
+</div>
+[% END %]

@@ -1,0 +1,14 @@
+Makefile
+inc/
+MANIFEST
+*.bak
+*.old
+nytprof.out
+nytprof/
+development.db
+test.db
+deployment.db
+MYMETA.json
+MYMETA.yml
+blib/
+

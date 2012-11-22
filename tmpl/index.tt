@@ -1,0 +1,23 @@
+[% WRAPPER 'include/layout.tt' %]
+
+<div class="FormContainer">
+    <form method="post" action="[% uri_for('/post') %]" class="nopaste">
+    <fieldset>
+    <textarea name="body" rows="20" cols="60"></textarea>
+    <input type="submit" value="post" class="clean-gray" />
+    </fieldset>
+    </form>
+</div>
+
+<div>
+    [% entries_cnt %] entries available.
+</div>
+
+[% FOREACH entry IN entries %]
+<div><a href="/entry/[% entry.entry_id %]">[% entry.datetime %]</a> <b>rum time : </b>[% entry.run_time %] <b>result:</b>[% entry.result %]</div>
+<div>
+    <pre class="code prettyprint">[% entry.body %]</pre>
+</div>
+[% END %]
+
+[% END %]
