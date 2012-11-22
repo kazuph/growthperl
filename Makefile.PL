@@ -20,7 +20,11 @@ WriteMakefile(
         'Test::WWW::Mechanize::PSGI'      => '0',
         'JSON'                            => '2.50',
         'Plack::Middleware::Session'      => '0',
-		'Data::UUID' => 0,
+        'Data::UUID' => 0,
+        'Data::Dump',
+        'Time::Piece',
+        'IO::Scalar',
+        'Time::Out',
     },
     MIN_PERL_VERSION => '5.008001',
     (-d 'xt' and $ENV{AUTOMATED_TESTING} || $ENV{RELEASE_TESTING}) ? (
