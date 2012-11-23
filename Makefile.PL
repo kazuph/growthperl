@@ -13,6 +13,7 @@ WriteMakefile(
         'HTML::FillInForm::Lite'          => '1.09',
         'String::CamelCase'               => '0.02',
         'DBD::SQLite'                     => '1.33',
+        'DBD::mysql'                      => 0, 
         'Log::Minimal'                    => '0.06',
         'Plack::Session'                  => '0.14',
         'Plack::Middleware::ReverseProxy' => '0.09',
