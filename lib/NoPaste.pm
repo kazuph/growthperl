@@ -9,5 +9,6 @@ use Amon2::Config::Simple;
 sub load_config { Amon2::Config::Simple->load(shift) }
 
 __PACKAGE__->load_plugin(qw/DBI/);
+__PACKAGE__->load_plugin('LogDispatch');
 
 1;
