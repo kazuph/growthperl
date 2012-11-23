@@ -7,7 +7,8 @@ use Data::Dump qw/dump/;
 use Time::Piece;
 use Time::HiRes qw/time gettimeofday tv_interval/;
 use IO::Scalar;
-use Time::Out qw( timeout );
+use Time::Out qw/timeout/;
+use Diff::LibXDiff;
 
 my $uuid = Data::UUID->new();
 
@@ -53,10 +54,17 @@ post '/post' => sub {
 get '/entry/{entry_id}' => sub {
     my ($c, $args) = @_;
 
-    my $row = $c->dbh->selectrow_hashref(q{SELECT * FROM entry WHERE entry_id=?}, {}, $args->{entry_id});
+    my $new = $c->dbh->selectrow_hashref(q{SELECT * FROM entry WHERE entry_id=?}, {}, $args->{entry_id});
+    my $old = $c->dbh->selectrow_hashref(q{SELECT * FROM entry WHERE id=?}, {}, $new->{id} - 1);
+
+    # create diff html
+    my $diff_html;
+    if ($old) {
+        $diff_html = Diff::LibXDiff->diff( $old->{body}, $new->{body} );
+    }
 
 
-    return $c->render('show.tt', $row);
+    return $c->render('show.tt', {new => $new, old => $old, diff => $diff_html});
 };
 
 sub eval_body {
