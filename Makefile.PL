@@ -6,6 +6,7 @@ WriteMakefile(
     VERSION_FROM  => 'lib/NoPaste.pm',
     PREREQ_PM     => {
         'Amon2'                           => '3.20',
+        'Amon2::Plugin::LogDispatch'      => '0.01',
         'Text::Xslate'                    => '1.4001',
         'Text::Xslate::Bridge::TT2Like'   => '0.00008',
         'Test::More'                      => '0.98',
