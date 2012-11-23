@@ -1,17 +1,16 @@
 [% WRAPPER 'include/layout.tt' %]
 
 <h3>Code</h3>
-<pre class="code prettyprint linenums:1">[% new.body %]</pre>
+<pre class="prettyprint linenums:1">[% new.body %]</pre>
 <h3>Result</h3>
 <pre>
 run time : [% new.run_time %] sec
 value    : [% new.result %]</pre>
 <h3>Diff</h3>
 <pre>
-[% diff | mark_raw %]
-</pre>
+[% diff | mark_raw %]</pre>
 
 <div>
-<a href="/">back</a>
+  <a href="/">TOP</a>
 </div>
 [% END %]

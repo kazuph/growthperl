@@ -61,8 +61,10 @@ get '/entry/{entry_id}' => sub {
     my $diff_html;
     if ($old) {
         $diff_html = Diff::LibXDiff->diff( $old->{body}, $new->{body} );
+        # add color like a git
+        $diff_html =~ s/^(-.*?)\r$/<span style="color:#f00;">$1<\/span>\r/mg;
+        $diff_html =~ s/^(\+.*?)\r$/<span style="color:#099;">$1<\/span>\r/mg;
     }
-
 
     return $c->render('show.tt', {new => $new, old => $old, diff => $diff_html});
 };
@@ -71,12 +73,12 @@ sub eval_body {
     my ($stdout, $start, $end) = timeout 5, @_ => sub {
 
         my $body = shift;
-        # エスケープ
+        # escape
         $body =~ s/`/'/g;
         $body =~ s/system//g;
         $body =~ s/eval//g;
 
-        # 実行する
+        # run code
         my $stdout;
         my $start;
         my $end;
