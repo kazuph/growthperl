@@ -1,2 +1,12 @@
 www:
-    type: perl
+    type: perl-worker
+    approot: .
+    ports:
+        www: http
+    systempackages:
+        - libdbd-mysql-perl
+    requirements:
+        - DBI
+        - DBD::mysql
+db:
+    type: mysql
