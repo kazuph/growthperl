@@ -62,8 +62,8 @@ get '/entry/{entry_id}' => sub {
     if ($old) {
         $diff_html = Diff::LibXDiff->diff( $old->{body}, $new->{body} );
         # add color like a git
-        $diff_html =~ s/^(-.*?)\r$/<span style="color:#f00;">$1<\/span>\r/mg;
-        $diff_html =~ s/^(\+.*?)\r$/<span style="color:#099;">$1<\/span>\r/mg;
+        $diff_html =~ s/^(-.*?)(?:\r)?$/<span style="color:#f00;">$1<\/span>\r/mg;
+        $diff_html =~ s/^(\+.*?)(?:\r)?$/<span style="color:#099;">$1<\/span>\r/mg;
     }
 
     return $c->render('show.tt', {new => $new, old => $old, diff => $diff_html});
