@@ -1,6 +1,6 @@
 www:
     type: perl-worker
-    approot: .
+    approot: app
     ports:
         www: http
     systempackages:
