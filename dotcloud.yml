@@ -1,0 +1,9 @@
+www:
+    type: perl-worker
+    approot: app
+    ports:
+        www: http
+    systempackages:
+        - libdbd-mysql-perl
+db:
+    type: mysql
