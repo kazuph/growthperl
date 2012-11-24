@@ -1,5 +1,0 @@
-#!/bin/sh
-
-echo "setup database"
-sqlite3 deployment.db < sql/my.sql
-

@@ -1,10 +1,2 @@
 www:
     type: perl
-    approot: app
-    ports:
-        www: http
-    postinstall: ./postinstall_mysql
-    systempackages:
-        - libdbd-mysql-perl
-db:
-    type: mysql
