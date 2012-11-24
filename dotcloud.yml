@@ -3,7 +3,7 @@ www:
     approot: app
     ports:
         www: http
-    process: hypnotoad -f app.psgi
+    postinstall: ./postinstall_mysql
     systempackages:
         - libdbd-mysql-perl
 db:
