@@ -8,15 +8,12 @@ use Plack::Builder;
 
 use PerlPad::Web;
 use PerlPad;
-use Plack::Session::Store::DBI;
-use Plack::Session::State::Cookie;
 use DBI;
 
 {
     my $c = PerlPad->new();
     $c->setup_schema();
 }
-my $db_config = PerlPad->config->{DBI} || die "Missing configuration for DBI";
 builder {
     enable 'Plack::Middleware::Static',
         path => qr{^(?:/static/)},
@@ -25,15 +22,5 @@ builder {
         path => qr{^(?:/robots\.txt|/favicon\.ico)$},
         root => File::Spec->catdir(dirname(__FILE__), 'static');
     enable 'Plack::Middleware::ReverseProxy';
-    enable 'Plack::Middleware::Session',
-        store => Plack::Session::Store::DBI->new(
-            get_dbh => sub {
-                DBI->connect( @$db_config )
-                    or die $DBI::errstr;
-            }
-        ),
-        state => Plack::Session::State::Cookie->new(
-            httponly => 1,
-        );
     PerlPad::Web->to_app();
 };
