@@ -1,8 +1,12 @@
-use File::Spec::Functions qw(catfile rel2abs);
+use File::Spec;
 use File::Basename qw(dirname);
-my $dbpath = catfile(rel2abs(dirname(__FILE__)), '..', 'db', 'deployment.db');
-print STDERR "HOME=$ENV{HOME}\nUSER=$ENV{USER}, $<, $dbpath\n";
-
+my $basedir = File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), '..'));
+my $dbpath;
+if ( -d '/home/dotcloud/') {
+    $dbpath = "/home/dotcloud/deployment.db";
+} else {
+    $dbpath = File::Spec->catfile($basedir, 'db', 'deployment.db');
+}
 +{
     'DBI' => [
         "dbi:SQLite:dbname=$dbpath",
@@ -12,6 +16,4 @@ print STDERR "HOME=$ENV{HOME}\nUSER=$ENV{USER}, $<, $dbpath\n";
             sqlite_unicode => 1,
         }
     ],
-    'Text::Xslate' => +{
-    },
 };

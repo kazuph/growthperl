@@ -1,6 +1,7 @@
-package NoPaste::Web::Dispatcher;
+package PerlPad::Web::Dispatcher;
 use strict;
 use warnings;
+use utf8;
 use Amon2::Web::Dispatcher::Lite;
 use Data::UUID;
 use Data::Dump qw/dump/;

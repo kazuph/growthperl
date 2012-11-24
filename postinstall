@@ -1,5 +1,5 @@
 #!/bin/sh
 
 echo "setup database"
-sqlite3 ./db/deployment.db < sql/sqlite.sql
+sqlite3 deployment.db < sql/sqlite.sql
 
