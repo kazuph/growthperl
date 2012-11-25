@@ -2,8 +2,10 @@ body {
     background-color: white;
 }
 
-input .btn{
-  width:600px;
+textarea { 
+  color: black
+  width: 600px;
+  height:70%;
 }
 
 footer {

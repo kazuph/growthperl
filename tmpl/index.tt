@@ -1,17 +1,11 @@
 [% WRAPPER 'include/layout.tt' %]
-
-<div class="FormContainer">
-    <form method="post" action="[% uri_for('/post') %]" class="nopaste">
-    <fieldset>
-    <textarea name="body" rows="20" cols="60"></textarea>
-    <input type="submit" value="post" class="clean-gray" />
-    </fieldset>
-    </form>
-</div>
-
 <div>
-    [% entries_cnt %] entries available.
+  <form method="post" action="[% uri_for('/post') %]" class="nopaste">
+      <textarea class="input-block-level" name="body" rows="20" cols="110" placeholder="write your code."></textarea>
+      <input type="submit" value="submit" class="btn btn-large btn-block" />
+  </form>
 </div>
+[% entries_cnt %] entries available.
 
 [% FOREACH entry IN entries %]
 <div><a href="/entry/[% entry.entry_id %]">[% entry.datetime %]</a> <b>rum time : </b>[% entry.run_time %] <b>result:</b>[% entry.result %]</div>
