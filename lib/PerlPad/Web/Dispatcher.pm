@@ -24,9 +24,9 @@ any '/' => sub {
     }
 
     $c->render('index.tt', {
-        entries_cnt => $entries_cnt,
-        entries     => $entries,
-    });
+            entries_cnt => $entries_cnt,
+            entries     => $entries,
+        });
 };
 
 post '/post' => sub {
@@ -34,18 +34,25 @@ post '/post' => sub {
 
     if (my $body = $c->req->param('body')) {
         my $entry_id = $uuid->create_str();
-        
-        my ($stdout, $run_time) = &eval_body($body);
 
-        $c->dbh->insert(
-            entry => {
-                entry_id => $entry_id,
-                body     => $body,
-                ctime    => time(),
-                result   => $stdout // "No Value",
-                run_time => $run_time,
-            }
-        );
+        my $stdout;
+        my $run_time;
+        eval{
+            ($stdout, $run_time) = &eval_body($body);
+
+            $c->dbh->insert(
+                entry => {
+                    entry_id => $entry_id,
+                    body     => $body,
+                    ctime    => time(),
+                    result   => $stdout // "No Value",
+                    run_time => $run_time,
+                }
+            );
+        };
+        if ($@) {
+            warn "#########ERROR: $@n";
+        }
         $c->redirect("/entry/$entry_id");
     } else {
         $c->redirect('/');
@@ -87,23 +94,23 @@ sub eval_body {
         my $end;
         {
             my $fh = new IO::Scalar(\$stdout);
-            local *STDOUT = $fh;
-            eval(
-                '$start = [gettimeofday];'
-                .$body
-                .'$end = [gettimeofday];'
-            );
-            if($@){$stdout = $@}
-        }
-        return ($stdout, $start, $end);
-    };
+        local *STDOUT = $fh;
+        eval(
+            '$start = [gettimeofday];'
+            .$body
+            .'$end = [gettimeofday];'
+        );
+        if($@){$stdout = $@}
+    }
+    return ($stdout, $start, $end);
+};
 
-    # Time Out.
-    return ("No Result.", "Time Out.") if (ref $stdout eq "CODE");
-    # Only Error Code.
-    return ($stdout, "NaN") unless ($end);
-    # Success Eval.
-    return ($stdout, sprintf("%.6f", tv_interval($start,  $end)));
+# Time Out.
+return ("No Result.", "Time Out.") if (ref $stdout eq "CODE");
+# Only Error Code.
+return ($stdout, "NaN") unless ($end);
+# Success Eval.
+return ($stdout, sprintf("%.6f", tv_interval($start,  $end)));
 }
 
 1;
