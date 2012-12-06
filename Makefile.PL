@@ -6,6 +6,7 @@ WriteMakefile(
     VERSION_FROM  => 'lib/PerlPad.pm',
     PREREQ_PM     => {
         'Amon2'                           => '3.32',
+        'Starman'                         => '0.3005',
         'Text::Xslate'                    => '1.5006',
         'Text::Xslate'                    => '1.4001',
         'Text::Xslate::Bridge::TT2Like'   => '0.00008',
