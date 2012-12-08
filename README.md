@@ -56,6 +56,12 @@ exec /usr/bin/supervisord -n
 # cd /etc/nginx
 # cp nginx.conf nginx.conf.org
 # cp /home/homepage/PerlPad/config/nginx/nginx.conf nginx.conf
+# cp /home/homepage/PerlPad/config/nginx/perlpad.conf conf.d/
+```
+
+## make directory
+```
+mkdir /var/log/PerlPad/nginx
 ```
 
 ## start nginx
