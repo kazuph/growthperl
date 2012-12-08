@@ -51,14 +51,14 @@ exec /usr/bin/supervisord -n
 # yum install nginx
 ```
 
-## set config
+### set config
 ```
 # cd /etc/nginx
 # cp nginx.conf nginx.conf.org
 # cp /home/homepage/PerlPad/config/nginx/nginx.conf nginx.conf
 ```
 
-## start nginx
+### start nginx
 ```
 # chkconfig nginx on
 # service nginx start
