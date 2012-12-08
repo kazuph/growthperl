@@ -3,6 +3,7 @@
 ```
 $ sudo yum groupinstall "Development Tools"
 $ curl -L http://cpanmin.us | perl - --sudo App::cpanminus
+$ ./postinstall
 $ ./install_cpan.sh
 ```
 
@@ -51,7 +52,7 @@ exec /usr/bin/supervisord -n
 # yum install nginx
 ```
 
-## set config
+### set config
 ```
 # cd /etc/nginx
 # cp nginx.conf nginx.conf.org
@@ -64,7 +65,7 @@ exec /usr/bin/supervisord -n
 mkdir /var/log/PerlPad/nginx
 ```
 
-## start nginx
+### start nginx
 ```
 # chkconfig nginx on
 # service nginx start
