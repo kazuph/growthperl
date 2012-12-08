@@ -3,6 +3,7 @@
 ```
 $ sudo yum groupinstall "Development Tools"
 $ curl -L http://cpanmin.us | perl - --sudo App::cpanminus
+$ ./postinstall
 $ ./install_cpan.sh
 ```
 
