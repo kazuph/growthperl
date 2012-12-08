@@ -3,8 +3,10 @@
 ```
 $ sudo yum groupinstall "Development Tools"
 $ curl -L http://cpanmin.us | perl - --sudo App::cpanminus
-$ ./postinstall
 $ ./install_cpan.sh
+$ ./postinstall
+# run
+$ perl -Mlib=extlib/lib/perl5 extlib/bin/plackup -s Starman -E deployment --preload-app --disable-keepalive --workers 10 app.psgi
 ```
 
 ## supervisor
