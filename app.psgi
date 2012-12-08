@@ -5,8 +5,8 @@ use File::Basename;
 use lib File::Spec->catdir(dirname(__FILE__), 'extlib', 'lib', 'perl5');
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
 use Plack::Builder;
-#use lib "$FindBin::Bin/lib";
-#use lib "$FindBin::Bin/extlib/lib/perl5";
+use lib "$FindBin::Bin/lib";
+use lib "$FindBin::Bin/extlib/lib/perl5";
 
 use PerlPad::Web;
 use PerlPad;
