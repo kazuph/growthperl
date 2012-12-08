@@ -1,27 +1,35 @@
-## PerlPad
-### install app
+# PerlPad
+## install app
 ```
 $ sudo yum groupinstall "Development Tools"
 $ curl -L http://cpanmin.us | perl - --sudo App::cpanminus
 $ ./install_cpan.sh
 ```
 
-### install supervisor
+## supervisor
+### install
 ```
 # yum install python-setuptools
 # easy_install pip
 # pip install supervisor
+```
 
+### make directory
+```
 # mkdir /var/log/supervisor
 # mkdir /etc/supervisord.d
-
-# cp -p /home/homepage/PerlPad/etc/supervisord.conf /etc/supervisord.conf
 # mkdir /var/log/PerlPad
 ```
-### start supervisor
+
+### set config
+```
+# cp -p /home/homepage/PerlPad/etc/supervisord.conf /etc/supervisord.conf
+```
+
+### set initctl
 ```
 # vi /etc/init/supervisord.conf
-
+# cat /etc/init/supervisord.conf
 description "supervisord"
 
 start on runlevel [2345]
@@ -29,7 +37,29 @@ stop on runlevel [!2345]
 
 respawn
 exec /usr/bin/supervisord -n
+```
 
+### start supervisor
+```
 # initctl start supervisord
 ```
 
+## nginx
+### install
+```
+# rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+# yum install nginx
+```
+
+## set config
+```
+# cd /etc/nginx
+# cp nginx.conf nginx.conf.org
+# cp /home/homepage/PerlPad/config/nginx/nginx.conf nginx.conf
+```
+
+## start nginx
+```
+# chkconfig nginx on
+# service nginx start
+```
