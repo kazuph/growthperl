@@ -1,4 +1,5 @@
 # PerlPad
+
 ## install app
 ```
 $ sudo yum groupinstall "Development Tools"
@@ -72,3 +73,9 @@ mkdir /var/log/PerlPad/nginx
 # chkconfig nginx on
 # service nginx start
 ```
+
+## TODO
+* add user_name to db.
+* make only one page in user page.
+* add making probrem page.
+* add admin page.

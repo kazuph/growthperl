@@ -28,10 +28,6 @@ builder {
     path => qr{^(?:/robots\.txt|/favicon\.ico)$},
     root => File::Spec->catdir(dirname(__FILE__), 'static');
     enable 'Plack::Middleware::ReverseProxy';
-    enable "Plack::Middleware::AccessLog",  format => "combined";
-    # enable "Plack::Middleware::AccessLog::Timed", 
-    #           format => "%v %h %l %u %t \"%r\" %>s %b %D";
-    # enable 'Debug';
     enable 'Plack::Middleware::Session',
         store => Plack::Session::Store::DBI->new(
             get_dbh => sub {
@@ -42,5 +38,12 @@ builder {
         state => Plack::Session::State::Cookie->new(
             httponly => 1,
         );
+    enable "Auth::Basic",  authenticator => \&authen_cb;
+    enable 'AxsLog', response_time => 1, error_only => 0;
     PerlPad::Web->to_app();
 };
+
+sub authen_cb {
+    my($username, $password) = @_;
+    return $username eq 'admin' && $password eq 'admin';
+}
