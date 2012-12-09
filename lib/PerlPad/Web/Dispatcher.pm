@@ -10,6 +10,7 @@ use Time::HiRes qw/time gettimeofday tv_interval/;
 use IO::Scalar;
 use Time::Out qw/timeout/;
 use Diff::LibXDiff;
+# use Log::Minimal;
 
 my $uuid = Data::UUID->new();
 
