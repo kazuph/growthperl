@@ -17,6 +17,8 @@ WriteMakefile(
         'JSON'                            => '2.50',
         'Plack::Middleware::ReverseProxy' => '0.09',
         'Plack::Middleware::Session'      => '0.15',
+        'Plack::Middleware::Log::Minimal' => '0.02',
+        'Log::Minimal'                    => '0.13',
         'String::CamelCase'               => '0.02',
         'Plack::Session'                  => '0.14',
         'Test::WWW::Mechanize::PSGI'      => '0.35',
