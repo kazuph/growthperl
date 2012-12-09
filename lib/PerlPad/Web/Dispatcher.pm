@@ -10,12 +10,23 @@ use Time::HiRes qw/time gettimeofday tv_interval/;
 use IO::Scalar;
 use Time::Out qw/timeout/;
 use Diff::LibXDiff;
-# use Log::Minimal;
+use Log::Minimal;
 
 my $uuid = Data::UUID->new();
 
 any '/' => sub {
     my ($c) = @_;
+    my $cnt = $c->session->get('cnt') || 0;
+    $c->session->set('cnt' => ++$cnt);
+
+    # my $foo = $c->session->get('foo');
+    # infof("###################%s", $foo);
+    # if ($foo) {
+    #     $c->session->set('foo' => $foo+1);
+    # } else {
+    #     $c->session->set('foo' => 1);
+    # }
+
     my ($entries_cnt) = $c->dbh->selectrow_array(q{SELECT COUNT(*) FROM entry;});
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry order by id desc;}, {Slice=>{}});
 

@@ -11,13 +11,15 @@ use lib "$FindBin::Bin/extlib/lib/perl5";
 
 use PerlPad::Web;
 use PerlPad;
+use Plack::Session::Store::DBI;
+use Plack::Session::State::Cookie;
 use DBI;
 
 {
     my $c = PerlPad->new();
     $c->setup_schema();
 }
-
+my $db_config = PerlPad->config->{DBI} || die "Missing configuration for DBI";
 builder {
     enable 'Plack::Middleware::Static',
     path => qr{^(?:/static/)},
@@ -30,5 +32,15 @@ builder {
     # enable "Plack::Middleware::AccessLog::Timed", 
     #           format => "%v %h %l %u %t \"%r\" %>s %b %D";
     # enable 'Debug';
+    enable 'Plack::Middleware::Session',
+        store => Plack::Session::Store::DBI->new(
+            get_dbh => sub {
+                DBI->connect( @$db_config )
+                    or die $DBI::errstr;
+            }
+        ),
+        state => Plack::Session::State::Cookie->new(
+            httponly => 1,
+        );
     PerlPad::Web->to_app();
 };
