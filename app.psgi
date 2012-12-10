@@ -1,4 +1,5 @@
 use strict;
+use warnings;
 use utf8;
 use File::Spec;
 use File::Basename;
@@ -6,8 +7,6 @@ use lib File::Spec->catdir(dirname(__FILE__), 'extlib', 'lib', 'perl5');
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
 use Log::Minimal;
 use Plack::Builder;
-use lib "$FindBin::Bin/lib";
-use lib "$FindBin::Bin/extlib/lib/perl5";
 
 use PerlPad::Web;
 use PerlPad;
@@ -40,6 +39,7 @@ builder {
         );
     enable "Auth::Basic",  authenticator => \&authen_cb;
     enable 'AxsLog', response_time => 1, error_only => 0;
+    enable 'Log::Minimal', autodump => 1;
     PerlPad::Web->to_app();
 };
 

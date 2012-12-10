@@ -13,9 +13,10 @@ use Log::Minimal;
 
 any '/' => sub {
     my ($c) = @_;
-    warn "#################", dump($c->request->env->{REMOTE_USER});
-    my ($entries_cnt) = $c->dbh->selectrow_array(q{SELECT COUNT(*) FROM entry;});
-    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry order by id desc;}, {Slice=>{}});
+    infof "ENV %s", $c->request->env;
+    infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
+
+    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER});
 
     for my $entry (@$entries) {
         my $t = localtime($entry->{ctime});
@@ -23,7 +24,7 @@ any '/' => sub {
     }
 
     $c->render('index.tt', {
-            entries_cnt => $entries_cnt,
+            user_name => $c->req->env->{REMOTE_USER},
             entries     => $entries,
         });
 };
@@ -42,16 +43,18 @@ post '/post' => sub {
 
             $c->dbh->insert(
                 entry => {
-                    body     => $body,
-                    ctime    => time(),
-                    result   => $stdout // "No Value",
-                    run_time => $run_time,
+                    body      => $body,
+                    user_name => $c->request->env->{REMOTE_USER} // "NOT LOGIN USER",
+                    result    => $stdout // "No Value",
+                    run_time  => $run_time,
+                    ctime     => time(),
                 }
             );
             $id = $c->dbh->last_insert_id(undef,  undef,  undef,  undef);
         };
         if ($@) {
-            warn "###ERROR: $@n";
+            critf "ERROR: $@n";
+            critff "ERROR: $@n";
         }
         $c->redirect("/entry/$id");
     } else {
@@ -77,6 +80,36 @@ get '/entry/{id}' => sub {
     }
 
     return $c->render('show.tt', {new => $new, old => $old, diff => $diff_html});
+};
+
+any '/users' => sub {
+    my ($c) = @_;
+
+    infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
+    $c->redirect("/") unless ($c->request->env->{REMOTE_USER} eq "admin");
+
+    my $users = $c->dbh->selectall_arrayref(q{SELECT distinct user_name FROM entry }, {Slice=>{}});
+
+    $c->render('users.tt', {
+            users     => $users,
+        });
+};
+
+any '/user/{user_name}' => sub {
+    my ($c, $args) = @_;
+
+    infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
+
+    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? order by id desc;}, {Slice=>{}}, $args->{user_name});
+
+    for my $entry (@$entries) {
+        my $t = localtime($entry->{ctime});
+        $entry->{datetime} = $t->date." ".$t->time;
+    }
+
+    $c->render('user.tt', {
+            entries     => $entries,
+        });
 };
 
 sub eval_body {
