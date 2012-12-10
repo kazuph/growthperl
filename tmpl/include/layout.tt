@@ -22,7 +22,13 @@
     <div class="container-fluid">
       <h1>
         <a class="brand" href="[% uri_for('/') %]">PerlPad</a>
+        [%- IF  page_title -%]
+        <a class="brand" href="[% uri_for('/') %]">[% page_title %]</a>
+        [%- END -%]
       </h1>
+      [% FOREACH problem IN problems %]
+      <span><a href="/problem/[% loop.count %]">問題[% loop.count %]</a> </span>
+      [% END %]
       [% content %]
       <footer>
         <small>

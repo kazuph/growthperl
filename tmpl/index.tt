@@ -1,8 +1,14 @@
 [% WRAPPER 'include/layout.tt' %]
+[%- IF problem_id != -1 -%]
+<h4>[% problems[problem_id].title %]</h4>
+<pre>[% problems[problem_id].text %]</pre>
+[% END %]
+
 <div>
   <form method="post" action="[% uri_for('/post') %]" class="nopaste">
       <textarea class="input-block-level" name="body" rows="20" cols="110" placeholder="Write [% user_name %]'s code."></textarea>
       <input type="submit" value="submit" class="btn btn-large btn-block" />
+      <input type="hidden" name="problem_id" value="[% problem_id %]"  />
   </form>
 </div>
 

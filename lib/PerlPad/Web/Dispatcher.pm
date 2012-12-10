@@ -16,7 +16,7 @@ any '/' => sub {
     infof "ENV %s", $c->request->env;
     infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
 
-    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER});
+    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = -1 order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER});
 
     for my $entry (@$entries) {
         my $t = localtime($entry->{ctime});
@@ -24,13 +24,39 @@ any '/' => sub {
     }
 
     $c->render('index.tt', {
+            page_title => "SANDBOX",
             user_name => $c->req->env->{REMOTE_USER},
-            entries     => $entries,
+            entries   => $entries,
+            problems  => $c->config->{PROBLEMS},
+            problem_id => -1, 
+        });
+};
+
+any '/problem/{id}' => sub {
+    my ($c, $args) = @_;
+    infof "ENV %s", $c->request->env;
+    infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
+
+    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = ? order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER}, $args->{id} -1 );
+
+    for my $entry (@$entries) {
+        my $t = localtime($entry->{ctime});
+        $entry->{datetime} = $t->date." ".$t->time;
+    }
+
+    $c->render('index.tt', {
+            page_title => "",
+            user_name  => $c->req->env->{REMOTE_USER},
+            entries    => $entries,
+            problems   => $c->config->{PROBLEMS},
+            problem_id => $args->{id} - 1,
         });
 };
 
 post '/post' => sub {
     my ($c) = @_;
+
+    debugf "#####%s", ;
 
     if (my $body = $c->req->param('body')) {
 
@@ -45,6 +71,7 @@ post '/post' => sub {
                 entry => {
                     body      => $body,
                     user_name => $c->request->env->{REMOTE_USER} // "NOT LOGIN USER",
+                    problem_id => $c->req->param('problem_id') // -1,
                     result    => $stdout // "No Value",
                     run_time  => $run_time,
                     ctime     => time(),
