@@ -74,8 +74,12 @@ mkdir /var/log/PerlPad/nginx
 # service nginx start
 ```
 
+## set problem text
+```
+cd config/problems/
+ln -s problem_sample.yml problem.yml
+```
+
 ## TODO
 * add user_name to db.
 * make only one page in user page.
-* add making probrem page.
-* add admin page.
