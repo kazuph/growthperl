@@ -7,7 +7,7 @@
 </div>
 
 [% FOREACH entry IN entries %]
-<div>[No.[% loop.size - loop.count + 1 %]] <a href="/entry/[% entry.id %]">[% entry.datetime %]</a> <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b> <b>rum time : </b>[% entry.run_time %] <b>result:</b>[% entry.result %]</div>
+<div>[No.[% loop.size - loop.count + 1 %]] <a href="/entry/[% entry.id %]">[% entry.datetime %]</a> <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b> <b>rum time : </b>[% entry.run_time %] sec <b>result:</b>[% entry.result %]</div>
 <div>
     <pre class="code prettyprint">[% entry.body %]</pre>
 </div>
