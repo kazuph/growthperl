@@ -30,6 +30,7 @@ WriteMakefile(
         'Time::Out'                       => '0.11',
         'Module::Find'                    => '0.11',
         'Diff::LibXDiff'                  => '0.05',
+        'YAML::XS'                        => '0.38',
     },
     MIN_PERL_VERSION => '5.008001',
     (-d 'xt' and $ENV{AUTOMATED_TESTING} || $ENV{RELEASE_TESTING}) ? (

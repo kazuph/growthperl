@@ -1,0 +1,6 @@
+[% WRAPPER 'include/layout.tt' %]
+[% FOREACH problem IN problems %]
+<h4>[% problem.title %]</h4>
+<pre>[% problem.text %]</pre>
+[% END %]
+[% END %]

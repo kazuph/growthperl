@@ -14,6 +14,7 @@ if ( -d '/home/dotcloud/') {
         '',
         +{
             sqlite_unicode => 1,
-        }
+        }, 
     ],
+    'PROBLEMS' => $problems,
 };

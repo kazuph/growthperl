@@ -14,7 +14,7 @@ use Log::Minimal;
 any '/' => sub {
     my ($c) = @_;
     infof "ENV %s", $c->request->env;
-    infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
+    infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER});
 
@@ -109,6 +109,17 @@ any '/user/{user_name}' => sub {
 
     $c->render('user.tt', {
             entries     => $entries,
+        });
+};
+
+any '/problems' => sub {
+    my ($c) = @_;
+
+    infof "PROBLEMS %s", $c->config->{PROBLEMS};
+    my $problems = $c->config->{PROBLEMS};
+
+    $c->render('problems.tt', {
+            problems     => $problems,
         });
 };
 
