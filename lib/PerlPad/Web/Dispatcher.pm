@@ -10,6 +10,12 @@ use IO::Scalar;
 use Time::Out qw/timeout/;
 use Diff::LibXDiff;
 use Log::Minimal;
+use Data::Dumper;
+{
+    package Data::Dumper;
+    sub qquote { return shift; }
+}
+$Data::Dumper::Useperl = 1;
 
 any '/' => sub {
     my ($c) = @_;
