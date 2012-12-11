@@ -3,7 +3,7 @@
 <h4>[% problems[problem_id].title %]</h4>
 <pre>[% problems[problem_id].text %]</pre>
 [% END %]
-[% IF entries.length > 1 %]
+[% IF entries.length > 0 %]
 <div><b>rum time : </b>[% entries[0].run_time %] sec</div>
 <div><b>result : </b>[% entries[0].result %]</div>
 <div><b>code : </b>
