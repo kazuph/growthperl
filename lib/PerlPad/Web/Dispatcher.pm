@@ -77,6 +77,7 @@ post '/post' => sub {
         eval{
             ($stdout, $run_time) = &eval_body($body);
             $stdout =~ s/\(eval \d+?\) //g;
+            $stdout =~ s/PerlPad::Web::Dispatcher:://g;
 
             $c->dbh->insert(
                 entry => {
