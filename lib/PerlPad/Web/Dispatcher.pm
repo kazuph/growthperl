@@ -94,7 +94,11 @@ post '/post' => sub {
             critff "ERROR: $@n";
         }
         # $c->redirect("/entry/$id");
-        $c->redirect('/');
+        if ($c->req->param('problem_id') == -1) {
+            $c->redirect('/');
+        } else {
+            $c->redirect("/problem/". scalar $c->req->param('problem_id') + 1);
+        }
     } else {
         $c->redirect('/');
     }
