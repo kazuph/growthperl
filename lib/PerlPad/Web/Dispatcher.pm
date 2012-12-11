@@ -13,14 +13,17 @@ use Log::Minimal;
 
 any '/' => sub {
     my ($c) = @_;
-    infof "ENV %s", $c->request->env;
-    infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = -1 order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER});
 
-    for my $entry (@$entries) {
-        my $t = localtime($entry->{ctime});
-        $entry->{datetime} = $t->date." ".$t->time;
+    for ( my $i = 0 ; $i < @$entries ; $i++ ) {
+        my $t = localtime($$entries[$i]->{ctime});
+        $$entries[$i]->{datetime} = $t->date." ".$t->time;
+        if ( $i < @$entries - 1 ) {
+            # create diff html
+            my $diff_html = &diff_html( $$entries[$i]->{body}, $$entries[$i + 1]->{body} );
+            $$entries[$i]->{diff_html} = $diff_html;
+        }
     }
 
     $c->render('index.tt', {
@@ -39,9 +42,18 @@ any '/problem/{id}' => sub {
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = ? order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER}, $args->{id} -1 );
 
-    for my $entry (@$entries) {
-        my $t = localtime($entry->{ctime});
-        $entry->{datetime} = $t->date." ".$t->time;
+    # for my $entry (@$entries) {
+    #     my $t = localtime($entry->{ctime});
+    #     $entry->{datetime} = $t->date." ".$t->time;
+    # }
+    for ( my $i = 0 ; $i < @$entries ; $i++ ) {
+        my $t = localtime($$entries[$i]->{ctime});
+        $$entries[$i]->{datetime} = $t->date." ".$t->time;
+        if ( $i < @$entries - 1 ) {
+            # create diff html
+            my $diff_html = &diff_html( $$entries[$i]->{body}, $$entries[$i + 1]->{body} );
+            $$entries[$i]->{diff_html} = $diff_html;
+        }
     }
 
     $c->render('index.tt', {
@@ -55,8 +67,6 @@ any '/problem/{id}' => sub {
 
 post '/post' => sub {
     my ($c) = @_;
-
-    debugf "#####%s", ;
 
     if (my $body = $c->req->param('body')) {
 
@@ -83,30 +93,11 @@ post '/post' => sub {
             critf "ERROR: $@n";
             critff "ERROR: $@n";
         }
-        $c->redirect("/entry/$id");
+        # $c->redirect("/entry/$id");
+        $c->redirect('/');
     } else {
         $c->redirect('/');
     }
-};
-
-get '/entry/{id}' => sub {
-    my ($c, $args) = @_;
-
-    my $new = $c->dbh->selectrow_hashref(q{SELECT * FROM entry WHERE id=?}, {}, $args->{id});
-    my $old = $c->dbh->selectrow_hashref(q{SELECT * FROM entry WHERE id=?}, {}, $new->{id} - 1);
-
-    # create diff html
-    my $diff_html;
-    if ($old) {
-        $diff_html = Diff::LibXDiff->diff( $old->{body}, $new->{body} );
-        # add color like a git
-        $diff_html =~ s/^(-.*?)(?:\r)?$/<span style="color:#f00;">$1<\/span>\r/mg;
-        $diff_html =~ s/^(\+.*?)(?:\r)?$/<span style="color:#099;">$1<\/span>\r/mg;
-        # delete "\ No newline at end of file"
-        $diff_html =~ s/\\ No newline at end of file\n//g;
-    }
-
-    return $c->render('show.tt', {new => $new, old => $old, diff => $diff_html});
 };
 
 any '/users' => sub {
@@ -118,7 +109,8 @@ any '/users' => sub {
     my $users = $c->dbh->selectall_arrayref(q{SELECT distinct user_name FROM entry }, {Slice=>{}});
 
     $c->render('users.tt', {
-            users     => $users,
+            users => $users,
+            user_name => $c->request->env->{REMOTE_USER} // "NOT LOGIN USER",
         });
 };
 
@@ -127,15 +119,48 @@ any '/user/{user_name}' => sub {
 
     infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
 
-    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? order by id desc;}, {Slice=>{}}, $args->{user_name});
+    my $problems = $c->dbh->selectall_arrayref(q{SELECT distinct problem_id FROM entry where user_name = ? order by problem_id;}, {Slice=>{}}, $args->{user_name});
 
-    for my $entry (@$entries) {
-        my $t = localtime($entry->{ctime});
-        $entry->{datetime} = $t->date." ".$t->time;
+    debugf "####%s", $problems;
+
+    for my $problem (@$problems) {
+        if ($problem->{problem_id} == -1) {
+            $problem->{title} = "SANDBOX";
+        } else {
+            $problem->{title} = $c->config->{PROBLEMS}[$problem->{problem_id}]->{title};
+        }
     }
 
     $c->render('user.tt', {
+            problems     => $problems,
+            user_name    => $args->{user_name},
+        });
+};
+
+any '/user/{user_name}/problem/{problem_id}' => sub {
+    my ($c, $args) = @_;
+
+    infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
+
+    my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = ? order by id desc;}, {Slice=>{}}, $args->{user_name}, $args->{problem_id});
+
+    # for my $entry (@$entries) {
+    #     my $t = localtime($entry->{ctime});
+    #     $entry->{datetime} = $t->date." ".$t->time;
+    # }
+    for ( my $i = 0 ; $i < @$entries ; $i++ ) {
+        my $t = localtime($$entries[$i]->{ctime});
+        $$entries[$i]->{datetime} = $t->date." ".$t->time;
+        if ( $i < @$entries - 1 ) {
+            # create diff html
+            my $diff_html = &diff_html( $$entries[$i]->{body}, $$entries[$i + 1]->{body} );
+            $$entries[$i]->{diff_html} = $diff_html;
+        }
+    }
+
+    $c->render('user_problem.tt', {
             entries     => $entries,
+            user_name    => $args->{user_name},
         });
 };
 
@@ -182,6 +207,20 @@ sub eval_body {
     return ($stdout, "NaN") unless ($end);
     # Success Eval.
     return ($stdout, sprintf("%.6f", tv_interval($start,  $end)));
+}
+
+sub diff_html {
+    my ($new, $old) = @_;
+    my $diff_html;
+    if ($old) {
+        $diff_html = Diff::LibXDiff->diff( $old, $new );
+        # add color like a git
+        $diff_html =~ s/^(-.*?)(?:\r)?$/<span style="color:#f00;">$1<\/span>\r/mg;
+        $diff_html =~ s/^(\+.*?)(?:\r)?$/<span style="color:#099;">$1<\/span>\r/mg;
+        # delete "\ No newline at end of file"
+        $diff_html =~ s/\\ No newline at end of file\n//g;
+    }
+    return $diff_html // "";
 }
 
 1;

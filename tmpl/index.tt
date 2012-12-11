@@ -6,17 +6,26 @@
 
 <div>
   <form method="post" action="[% uri_for('/post') %]" class="nopaste">
-      <textarea class="input-block-level" name="body" rows="20" cols="110" placeholder="Write [% user_name %]'s code."></textarea>
+      <textarea class="input-block-level" name="body" rows="20" cols="110" placeholder="Write [% user_name %]'s code.">[% IF entries %][% entries[0].body %][% END %]</textarea>
       <input type="submit" value="submit" class="btn btn-large btn-block" />
       <input type="hidden" name="problem_id" value="[% problem_id %]"  />
   </form>
 </div>
 
 [% FOREACH entry IN entries %]
-<div>[No.[% loop.size - loop.count + 1 %]] <a href="/entry/[% entry.id %]">[% entry.datetime %]</a> <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b> <b>rum time : </b>[% entry.run_time %] sec <b>result:</b>[% entry.result %]</div>
-<div>
+<hr />
+<div>[% entry.datetime %] by <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b>
+</div>
+<div><b>rum time : </b>[% entry.run_time %] sec</div>
+<div><b>result : </b>[% entry.result %]</div>
+<div><b>code : </b>
     <pre class="code prettyprint">[% entry.body %]</pre>
 </div>
+[% IF entry.diff_html %]
+<div><b>diff : </b>
+    <pre>[% entry.diff_html | mark_raw %]</pre>
+</div>
+[% END %]
 [% END %]
 
 [% END %]

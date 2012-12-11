@@ -1,8 +1,7 @@
 [% WRAPPER 'include/layout.tt' %]
-[% FOREACH entry IN entries %]
-<div>[No.[% loop.size - loop.count + 1 %]] <a href="/entry/[% entry.entry_id %]">[% entry.datetime %]</a> <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b> <b>rum time : </b>[% entry.run_time %] <b>result:</b>[% entry.result %]</div>
-<div>
-    <pre class="code prettyprint">[% entry.body %]</pre>
+<h4>[% user_name %]が解いた問題リスト</h4>
+[% FOREACH problem IN problems %]
+<div><a href="/user/[% user_name %]/problem/[% problem.problem_id %]">[% problem.title %]</a>
 </div>
 [% END %]
 
