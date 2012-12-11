@@ -27,7 +27,7 @@
         [%- END -%]
       </h1>
       [% FOREACH problem IN problems %]
-      <span><a href="/problem/[% loop.count %]">問題[% loop.count %]</a> </span>
+      <span><a href="/problem/[% loop.count %]">[% problem.title %]</a> </span>
       [% END %]
       [% content %]
       <footer>
