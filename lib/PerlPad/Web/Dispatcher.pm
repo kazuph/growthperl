@@ -108,7 +108,7 @@ any '/users' => sub {
     my ($c) = @_;
 
     infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
-    $c->redirect("/") unless ($c->request->env->{REMOTE_USER} eq "admin");
+    return $c->redirect("/") unless ($c->request->env->{REMOTE_USER} eq "admin");
 
     my $users = $c->dbh->selectall_arrayref(q{SELECT distinct user_name FROM entry }, {Slice=>{}});
 
