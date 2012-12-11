@@ -24,6 +24,8 @@
 </div>
 
 [% FOREACH entry IN entries %]
+  [% IF loop.is_first %]
+  [% ELSE %]
 <hr />
 <div>[% entry.datetime %] by <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b>
 </div>
@@ -32,11 +34,12 @@
 <div><b>code : </b>
     <pre class="code prettyprint">[% entry.body %]</pre>
 </div>
-[% IF entry.diff_html %]
+    [% IF entry.diff_html %]
 <div><b>diff : </b>
     <pre>[% entry.diff_html | mark_raw %]</pre>
 </div>
-[% END %]
+    [% END %]
+  [% END %]
 [% END %]
 
 [% END %]

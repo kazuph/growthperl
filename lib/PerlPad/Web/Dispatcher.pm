@@ -48,10 +48,6 @@ any '/problem/{id}' => sub {
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = ? order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER}, $args->{id} -1 );
 
-    # for my $entry (@$entries) {
-    #     my $t = localtime($entry->{ctime});
-    #     $entry->{datetime} = $t->date." ".$t->time;
-    # }
     for ( my $i = 0 ; $i < @$entries ; $i++ ) {
         my $t = localtime($$entries[$i]->{ctime});
         $$entries[$i]->{datetime} = $t->date." ".$t->time;
@@ -75,7 +71,6 @@ post '/post' => sub {
     my ($c) = @_;
 
     if (my $body = $c->req->param('body')) {
-
         my $stdout;
         my $run_time;
         my $id;
@@ -99,7 +94,6 @@ post '/post' => sub {
             critf "ERROR: $@n";
             critff "ERROR: $@n";
         }
-        # $c->redirect("/entry/$id");
         if ($c->req->param('problem_id') == -1) {
             $c->redirect('/');
         } else {
@@ -154,10 +148,6 @@ any '/user/{user_name}/problem/{problem_id}' => sub {
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = ? order by id desc;}, {Slice=>{}}, $args->{user_name}, $args->{problem_id});
 
-    # for my $entry (@$entries) {
-    #     my $t = localtime($entry->{ctime});
-    #     $entry->{datetime} = $t->date." ".$t->time;
-    # }
     for ( my $i = 0 ; $i < @$entries ; $i++ ) {
         my $t = localtime($$entries[$i]->{ctime});
         $$entries[$i]->{datetime} = $t->date." ".$t->time;
