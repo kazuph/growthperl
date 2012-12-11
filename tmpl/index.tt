@@ -3,6 +3,18 @@
 <h4>[% problems[problem_id].title %]</h4>
 <pre>[% problems[problem_id].text %]</pre>
 [% END %]
+[% IF entries %]
+<div><b>rum time : </b>[% entries[0].run_time %] sec</div>
+<div><b>result : </b>[% entries[0].result %]</div>
+<div><b>code : </b>
+    <pre class="code prettyprint">[% entries[0].body %]</pre>
+</div>
+[% IF entries[0].diff_html %]
+<div><b>diff : </b>
+    <pre>[% entries[0].diff_html | mark_raw %]</pre>
+</div>
+[% END %]
+[% END %]
 
 <div>
   <form method="post" action="[% uri_for('/post') %]" class="nopaste">
