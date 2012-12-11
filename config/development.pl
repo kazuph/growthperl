@@ -1,8 +1,8 @@
 use File::Spec;
 use File::Basename qw(dirname);
 use YAML::XS;
-use Log::Minimal;
-use Data::Dump qw/dump/;
+# use Log::Minimal;
+# use Data::Dump qw/dump/;
 use IO::File;
 
 my $basedir = File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), '..'));
@@ -13,10 +13,10 @@ if ( -d '/home/dotcloud/') {
     $dbpath = File::Spec->catfile($basedir, 'db', 'development.db');
 }
 
-# read problem.yml
+# read problems.yml
 my $problems;
 if ( -d "$basedir/config/problems/") {
-    $problems = YAML::XS::LoadFile("$basedir/config/problems/problem.yml");
+    $problems = YAML::XS::LoadFile("$basedir/config/problems/problems.yml");
 }
 +{
     'DBI' => [

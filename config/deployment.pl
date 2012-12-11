@@ -16,7 +16,7 @@ if ( -d '/home/dotcloud/') {
 # read problem.yml
 my $problems;
 if ( -d "$basedir/config/problems/") {
-    $problems = YAML::XS::LoadFile("$basedir/config/problems/problem.yml");
+    $problems = YAML::XS::LoadFile("$basedir/config/problems/problems.yml");
 }
 +{
     'DBI' => [

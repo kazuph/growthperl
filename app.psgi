@@ -5,7 +5,6 @@ use File::Spec;
 use File::Basename;
 use lib File::Spec->catdir(dirname(__FILE__), 'extlib', 'lib', 'perl5');
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
-use Log::Minimal;
 use Plack::Builder;
 
 use PerlPad::Web;
@@ -13,11 +12,15 @@ use PerlPad;
 use Plack::Session::Store::DBI;
 use Plack::Session::State::Cookie;
 use DBI;
+use YAML::XS;
+use Log::Minimal;
+use Data::Dump qw/dump/;
 
 {
     my $c = PerlPad->new();
     $c->setup_schema();
 }
+
 my $db_config = PerlPad->config->{DBI} || die "Missing configuration for DBI";
 builder {
     enable 'Plack::Middleware::Static',
@@ -43,7 +46,18 @@ builder {
     PerlPad::Web->to_app();
 };
 
+
 sub authen_cb {
     my($username, $password) = @_;
-    return $username eq 'admin' && $password eq 'admin';
+
+    # read users.yml
+    my $users;
+    my $basedir = File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__)));
+    if ( -d "$basedir/config/users/") {
+        $users = YAML::XS::LoadFile("$basedir/config/users/users.yml");
+    }
+    for my $user (keys %$users) {
+        return 1 if $user eq $username and $$users{$user} eq $password;
+    }
+    return 0;
 }
