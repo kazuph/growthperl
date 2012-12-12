@@ -13,5 +13,8 @@ MYMETA.*
 META.*
 extlib/
 *.swp
+config/problems/problems.yml
+config/users/users.yml
 config/problems/problems_2013.yml
 config/users/users_2013.yml
+
