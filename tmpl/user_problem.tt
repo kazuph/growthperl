@@ -1,10 +1,13 @@
 [% WRAPPER 'include/layout.tt' %]
+<h4>[% title %]の解答</h4>
 [% FOREACH entry IN entries %]
 <hr />
 <div>[% entry.datetime %] by <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b>
 </div>
 <div><b>rum time : </b>[% entry.run_time %] sec</div>
-<div><b>result : </b>[% entry.result %]</div>
+<div><b>output : </b>
+    <pre class="code prettyprint">[% entry.result %]</pre>
+</div>
 <div><b>code : </b>
     <pre class="code prettyprint">[% entry.body %]</pre>
 </div>

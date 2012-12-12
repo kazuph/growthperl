@@ -4,15 +4,9 @@
 <pre>[% problems[problem_id].text %]</pre>
 [% END %]
 [% IF entries.size() > 0 %]
-<div><b>rum time : </b>[% entries[0].run_time %] sec</div>
-<div><b>result : </b>
+<div><b>output : </b>
     <pre class="code prettyprint">[% entries[0].result %]</pre>
 </div>
-[% IF entries[0].diff_html %]
-<div><b>diff : </b>
-    <pre>[% entries[0].diff_html | mark_raw %]</pre>
-</div>
-[% END %]
 [% END %]
 
 <div>
@@ -29,16 +23,10 @@
 <hr />
 <div>[% entry.datetime %] by <b><a href="/user/[% entry.user_name %]">[% entry.user_name %]</a> </b>
 </div>
-<div><b>rum time : </b>[% entry.run_time %] sec</div>
-<div><b>result : </b>[% entry.result %]</div>
+<div><b>output : </b>[% entry.result %]</div>
 <div><b>code : </b>
     <pre class="code prettyprint">[% entry.body %]</pre>
 </div>
-    [% IF entry.diff_html %]
-<div><b>diff : </b>
-    <pre>[% entry.diff_html | mark_raw %]</pre>
-</div>
-    [% END %]
   [% END %]
 [% END %]
 

@@ -19,17 +19,18 @@ $Data::Dumper::Useperl = 1;
 
 any '/' => sub {
     my ($c) = @_;
+    infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = -1 order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER});
 
     for ( my $i = 0 ; $i < @$entries ; $i++ ) {
         my $t = localtime($$entries[$i]->{ctime});
         $$entries[$i]->{datetime} = $t->date." ".$t->time;
-        if ( $i < @$entries - 1 ) {
-            # create diff html
-            my $diff_html = &diff_html( $$entries[$i]->{body}, $$entries[$i + 1]->{body} );
-            $$entries[$i]->{diff_html} = $diff_html;
-        }
+        # if ( $i < @$entries - 1 ) {
+        #     # create diff html
+        #     my $diff_html = &diff_html( $$entries[$i]->{body}, $$entries[$i + 1]->{body} );
+        #     $$entries[$i]->{diff_html} = $diff_html;
+        # }
     }
 
     $c->render('index.tt', {
@@ -43,7 +44,6 @@ any '/' => sub {
 
 any '/problem/{id}' => sub {
     my ($c, $args) = @_;
-    infof "ENV %s", $c->request->env;
     infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = ? order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER}, $args->{id} -1 );
@@ -51,11 +51,11 @@ any '/problem/{id}' => sub {
     for ( my $i = 0 ; $i < @$entries ; $i++ ) {
         my $t = localtime($$entries[$i]->{ctime});
         $$entries[$i]->{datetime} = $t->date." ".$t->time;
-        if ( $i < @$entries - 1 ) {
-            # create diff html
-            my $diff_html = &diff_html( $$entries[$i]->{body}, $$entries[$i + 1]->{body} );
-            $$entries[$i]->{diff_html} = $diff_html;
-        }
+        # if ( $i < @$entries - 1 ) {
+        #     # create diff html
+        #     my $diff_html = &diff_html( $$entries[$i]->{body}, $$entries[$i + 1]->{body} );
+        #     $$entries[$i]->{diff_html} = $diff_html;
+        # }
     }
 
     $c->render('index.tt', {
@@ -126,8 +126,6 @@ any '/user/{user_name}' => sub {
 
     my $problems = $c->dbh->selectall_arrayref(q{SELECT distinct problem_id FROM entry where user_name = ? order by problem_id;}, {Slice=>{}}, $args->{user_name});
 
-    debugf "####%s", $problems;
-
     for my $problem (@$problems) {
         if ($problem->{problem_id} == -1) {
             $problem->{title} = "SANDBOX";
@@ -137,8 +135,8 @@ any '/user/{user_name}' => sub {
     }
 
     $c->render('user.tt', {
-            problems     => $problems,
-            user_name    => $args->{user_name},
+            solved_problems => $problems,
+            user_name       => $args->{user_name},
         });
 };
 
@@ -162,6 +160,7 @@ any '/user/{user_name}/problem/{problem_id}' => sub {
     $c->render('user_problem.tt', {
             entries     => $entries,
             user_name    => $args->{user_name},
+            title    => $c->config->{PROBLEMS}[$args->{problem_id}]->{title},
         });
 };
 

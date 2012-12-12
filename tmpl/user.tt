@@ -1,6 +1,6 @@
 [% WRAPPER 'include/layout.tt' %]
 <h4>[% user_name %]が解いた問題リスト</h4>
-[% FOREACH problem IN problems %]
+[% FOREACH problem IN solved_problems %]
 <div><a href="/user/[% user_name %]/problem/[% problem.problem_id %]">[% problem.title %]</a>
 </div>
 [% END %]

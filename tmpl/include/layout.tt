@@ -23,9 +23,13 @@
       <h1>
         <a class="brand" href="[% uri_for('/') %]">PerlPad</a>
         [%- IF  page_title -%]
-        <a class="brand" href="[% uri_for('/') %]">[% page_title %]</a>
+        <span>[% page_title %]</span>
         [%- END -%]
       </h1>
+      [% IF user_name && user_name == "admin" %]
+      <div><a href="/users">【管理】User List</a></div>
+      <div><a href="/problems">【管理】Problem List</a></div>
+      [% END %]
       [% FOREACH problem IN problems %]
       <span><a href="/problem/[% loop.count %]">[% problem.title %]</a> </span>
       [% END %]
