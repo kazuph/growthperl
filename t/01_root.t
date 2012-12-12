@@ -8,13 +8,14 @@ use Test::More;
 
 my $app = Plack::Util::load_psgi 'app.psgi';
 test_psgi
-    app => $app,
-    client => sub {
-        my $cb = shift;
-        my $req = HTTP::Request->new(GET => 'http://localhost/');
-        my $res = $cb->($req);
-        is $res->code, 200;
-        diag $res->content if $res->code != 200;
-    };
+app => $app,
+client => sub {
+    my $cb = shift;
+    # print `curl http://admin:admin\@localhost:5000`;
+    my $req = HTTP::Request->new(GET => 'http://localhost:5000');
+    my $res = $cb->($req);
+    is $res->code, 200;
+    diag $res->content if $res->code != 200;
+};
 
 done_testing;

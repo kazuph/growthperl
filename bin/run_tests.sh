@@ -1,0 +1,1 @@
+prove -PPretty -v t/
