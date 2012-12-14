@@ -165,6 +165,8 @@ any '/user/{user_name}/problem/{problem_id}' => sub {
             user_name    => $args->{user_name},
             title    => $c->config->{PROBLEMS}[$args->{problem_id}]->{title},
             back_page       => "/user/".$args->{user_name},
+            problems   => $c->config->{PROBLEMS},
+            problem_id => $args->{problem_id},
         });
 };
 

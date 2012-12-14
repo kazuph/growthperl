@@ -1,4 +1,10 @@
 [% WRAPPER 'include/layout.tt' %]
+
+[%- IF problem_id != -1 -%]
+<h4>[% problems[problem_id].title %]</h4>
+<pre>[% problems[problem_id].text %]</pre>
+[% END %]
+
 <h4>[% title %]の解答</h4>
 [% FOREACH entry IN entries %]
 <hr />
