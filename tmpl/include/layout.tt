@@ -34,6 +34,11 @@
       <span><a href="/problem/[% loop.count %]">[% problem.title %]</a> </span>
       [% END %]
       [% content %]
+      [% IF back_page %]
+      <div>
+        <a href="[% back_page %]">戻る</a>
+      </div>
+      [% END %]
       <footer>
         <small>
           Powered by <a href="http://amon.64p.org/">Amon2</a>

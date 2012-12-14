@@ -138,6 +138,7 @@ any '/user/{user_name}' => sub {
     $c->render('user.tt', {
             solved_problems => $problems,
             user_name       => $args->{user_name},
+            back_page       => "/users",
         });
 };
 
@@ -163,6 +164,7 @@ any '/user/{user_name}/problem/{problem_id}' => sub {
             entries     => $entries,
             user_name    => $args->{user_name},
             title    => $c->config->{PROBLEMS}[$args->{problem_id}]->{title},
+            back_page       => "/user/".$args->{user_name},
         });
 };
 
