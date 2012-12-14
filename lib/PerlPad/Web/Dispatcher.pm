@@ -123,6 +123,7 @@ any '/user/{user_name}' => sub {
     my ($c, $args) = @_;
 
     infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
+    return $c->redirect("/") unless ($c->request->env->{REMOTE_USER} eq "admin");
 
     my $problems = $c->dbh->selectall_arrayref(q{SELECT distinct problem_id FROM entry where user_name = ? order by problem_id;}, {Slice=>{}}, $args->{user_name});
 
@@ -144,6 +145,7 @@ any '/user/{user_name}/problem/{problem_id}' => sub {
     my ($c, $args) = @_;
 
     infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
+    return $c->redirect("/") unless ($c->request->env->{REMOTE_USER} eq "admin");
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = ? order by id desc;}, {Slice=>{}}, $args->{user_name}, $args->{problem_id});
 
