@@ -111,7 +111,12 @@ any '/users' => sub {
     infof "REMOTE_USER %s", dump($c->request->env->{REMOTE_USER});
     return $c->redirect("/") unless ($c->request->env->{REMOTE_USER} eq "admin");
 
-    my $users = $c->dbh->selectall_arrayref(q{SELECT distinct user_name FROM entry }, {Slice=>{}});
+    my $users = $c->dbh->selectall_arrayref(q{SELECT distinct user_name, ctime FROM entry group by user_name;}, {Slice=>{}});
+
+    for ( my $i = 0 ; $i < @$users ; $i++ ) {
+        my $t = localtime($$users[$i]->{ctime});
+        $$users[$i]->{datetime} = $t->date;
+    }
 
     $c->render('users.tt', {
             users => $users,

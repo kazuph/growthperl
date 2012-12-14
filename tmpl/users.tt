@@ -1,5 +1,5 @@
 [% WRAPPER 'include/layout.tt' %]
 [% FOREACH user IN users %]
-<div><a href="/user/[% user.user_name %]">[% user.user_name %]</a></div>
+<div><a href="/user/[% user.user_name %]">[% user.datetime %] [% user.user_name %]</a></div>
 [% END %]
 [% END %]
