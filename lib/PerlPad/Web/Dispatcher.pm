@@ -197,11 +197,14 @@ sub eval_body {
 
         # run code
         my $stdout;
+        my $stderr;
         my $start;
         my $end;
         {
-            my $fh = new IO::Scalar(\$stdout);
-            local *STDOUT = $fh;
+            my $out = new IO::Scalar(\$stdout);
+            my $err = new IO::Scalar(\$stderr);
+            local *STDOUT = $out;
+            local *STDERR = $err;
             eval(
                 '$start = [gettimeofday];'
                 .$body
@@ -209,6 +212,7 @@ sub eval_body {
             );
             if($@){$stdout = $@}
         }
+        $stdout = $stderr.$stdout if $stderr;
         return ($stdout, $start, $end);
     };
 
