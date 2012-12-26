@@ -205,11 +205,11 @@ sub eval_body {
             my $err = new IO::Scalar(\$stderr);
             local *STDOUT = $out;
             local *STDERR = $err;
+            $start = [gettimeofday];
             eval(
-                '$start = [gettimeofday];'
-                .$body
-                .'$end = [gettimeofday];'
+                $body
             );
+            $end = [gettimeofday];
             if($@){$stdout = $@}
         }
         $stdout = $stderr.$stdout if $stderr;
