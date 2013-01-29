@@ -11,7 +11,7 @@
 
 <div>
   <form method="post" action="[% uri_for('/post') %]" class="nopaste">
-      <textarea class="input-block-level" name="body" rows="20" cols="110" placeholder="Write [% user_name %]'s code.">[% IF entries %][% entries[0].body %][% END %]</textarea>
+      <textarea class="input-block-level tabby" name="body" rows="20" cols="110" placeholder="Write [% user_name %]'s code.">[% IF entries %][% entries[0].body %][% END %]</textarea>
       <input type="submit" value="submit" class="btn btn-large btn-block" />
       <input type="hidden" name="problem_id" value="[% problem_id %]"  />
   </form>
