@@ -2,7 +2,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME          => 'PerlPad',
-    AUTHOR        => 'Some Person <person@example.com>',
+    AUTHOR        => 'Kazuhiro Homma',
     VERSION_FROM  => 'lib/PerlPad.pm',
     PREREQ_PM     => {
         'Amon2'                           => '3.32',
