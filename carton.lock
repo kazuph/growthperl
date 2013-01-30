@@ -2452,6 +2452,93 @@
          "target" : "Data::OptList",
          "version" : "0.107"
       },
+      "Data::Validator" : {
+         "dist" : "Data-Validator-1.02",
+         "mymeta" : {
+            "abstract" : "Rule based validator on type constraint system",
+            "author" : [
+               "Fuji, Goro (gfx) <gfuji@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Data-Validator",
+            "no_index" : {
+               "directory" : [
+                  "example",
+                  "inc",
+                  "t",
+                  "xt"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.59",
+                     "Test::More" : "0.88",
+                     "Test::Requires" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.59"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Mouse" : "0.93",
+                     "perl" : "5.008001"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ],
+               "repository" : {
+                  "type" : "git",
+                  "url" : "git://github.com/gfx/p5-Data-Validator.git"
+               }
+            },
+            "version" : "1.02",
+            "x_module_name" : "Data::Validator"
+         },
+         "name" : "Data::Validator",
+         "pathname" : "G/GF/GFUJI/Data-Validator-1.02.tar.gz",
+         "provides" : {
+            "Data::Validator" : {
+               "file" : "Data/Validator.pm",
+               "version" : "1.02"
+            },
+            "Data::Validator::Role::AllowExtra" : {
+               "file" : "Data/Validator/Role/AllowExtra.pm"
+            },
+            "Data::Validator::Role::Croak" : {
+               "file" : "Data/Validator/Role/Croak.pm"
+            },
+            "Data::Validator::Role::Method" : {
+               "file" : "Data/Validator/Role/Method.pm"
+            },
+            "Data::Validator::Role::NoThrow" : {
+               "file" : "Data/Validator/Role/NoThrow.pm"
+            },
+            "Data::Validator::Role::Sequenced" : {
+               "file" : "Data/Validator/Role/Sequenced.pm"
+            },
+            "Data::Validator::Role::StrictSequenced" : {
+               "file" : "Data/Validator/Role/StrictSequenced.pm"
+            }
+         },
+         "target" : "Data::Validator",
+         "version" : "1.02"
+      },
       "Devel::GlobalDestruction" : {
          "dist" : "Devel-GlobalDestruction-0.09",
          "mymeta" : {
@@ -3999,6 +4086,78 @@
          },
          "target" : "Filesys::Notify::Simple",
          "version" : "0.09"
+      },
+      "Getopt::Compact::WithCmd" : {
+         "dist" : "Getopt-Compact-WithCmd-0.21",
+         "mymeta" : {
+            "abstract" : "sub-command friendly, like Getopt::Compact",
+            "author" : [
+               "xaicron <xaicron {at} cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Getopt-Compact-WithCmd",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t",
+                  "xt"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.59",
+                     "Test::More" : "0.96",
+                     "Test::Output" : 0,
+                     "Test::Requires" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.59"
+                  }
+               },
+               "runtime" : {
+                  "recommends" : {
+                     "Text::ParseWords" : 0
+                  },
+                  "requires" : {
+                     "Getopt::Long" : "2.38",
+                     "Text::Table" : 0,
+                     "perl" : "5.008001"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ],
+               "repository" : {
+                  "type" : "git",
+                  "url" : "git://github.com/xaicron/p5-Getopt-Compact-WithCmd.git"
+               }
+            },
+            "version" : "0.21"
+         },
+         "name" : "Getopt::Compact::WithCmd",
+         "pathname" : "X/XA/XAICRON/Getopt-Compact-WithCmd-0.21.tar.gz",
+         "provides" : {
+            "Getopt::Compact::WithCmd" : {
+               "file" : "Getopt/Compact/WithCmd.pm",
+               "version" : "0.21"
+            }
+         },
+         "target" : "Getopt::Compact::WithCmd",
+         "version" : "0.21"
       },
       "HTML::FillInForm::Lite" : {
          "dist" : "HTML-FillInForm-Lite-1.12",
@@ -8692,6 +8851,148 @@
          "target" : "Package::Stash::XS",
          "version" : "0.26"
       },
+      "Parallel::Prefork" : {
+         "dist" : "Parallel-Prefork-0.13",
+         "mymeta" : {
+            "abstract" : "A simple prefork server framework",
+            "author" : [
+               "Kazuho Oku"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Parallel-Prefork",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42",
+                     "Test::Requires" : 0,
+                     "Test::SharedFork" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Class::Accessor::Lite" : "0.04",
+                     "List::MoreUtils" : 0,
+                     "Proc::Wait3" : "0.03",
+                     "Scope::Guard" : 0,
+                     "perl" : "5.008001"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ]
+            },
+            "version" : "0.13",
+            "x_module_name" : "Parallel::Prefork"
+         },
+         "name" : "Parallel::Prefork",
+         "pathname" : "K/KA/KAZUHO/Parallel-Prefork-0.13.tar.gz",
+         "provides" : {
+            "Parallel::Prefork" : {
+               "file" : "Parallel/Prefork.pm",
+               "version" : "0.13"
+            },
+            "Parallel::Prefork::SpareWorkers" : {
+               "file" : "Parallel/Prefork/SpareWorkers.pm"
+            },
+            "Parallel::Prefork::SpareWorkers::Scoreboard" : {
+               "file" : "Parallel/Prefork/SpareWorkers/Scoreboard.pm"
+            }
+         },
+         "target" : "Parallel::Prefork",
+         "version" : "0.13"
+      },
+      "Parallel::Scoreboard" : {
+         "dist" : "Parallel-Scoreboard-0.03",
+         "mymeta" : {
+            "abstract" : "a scoreboard for monitoring status of many workers",
+            "author" : [
+               "Kazuho Oku <kazuhooku gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Parallel-Scoreboard",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42",
+                     "File::Temp" : 0,
+                     "Test::More" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Class::Accessor::Lite" : "0.05",
+                     "Filter::Util::Call" : 0,
+                     "HTML::Entities" : 0,
+                     "JSON" : 0
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ]
+            },
+            "version" : "0.03"
+         },
+         "name" : "Parallel::Scoreboard",
+         "pathname" : "K/KA/KAZUHO/Parallel-Scoreboard-0.03.tar.gz",
+         "provides" : {
+            "Parallel::Scoreboard" : {
+               "file" : "Parallel/Scoreboard.pm",
+               "version" : "0.03"
+            },
+            "Parallel::Scoreboard::PSGI::App" : {
+               "file" : "Parallel/Scoreboard/PSGI/App.pm"
+            },
+            "Parallel::Scoreboard::PSGI::App::JSON" : {
+               "file" : "Parallel/Scoreboard/PSGI/App/JSON.pm"
+            }
+         },
+         "target" : "Parallel::Scoreboard",
+         "version" : "0.03"
+      },
       "Params::Util" : {
          "dist" : "Params-Util-1.07",
          "mymeta" : {
@@ -9618,6 +9919,133 @@
          "target" : "Plack::Session",
          "version" : "0.15"
       },
+      "Proc::Wait3" : {
+         "dist" : "Proc-Wait3-0.04",
+         "mymeta" : {
+            "abstract" : "Perl extension for wait3 system call",
+            "author" : [
+               "C. Tilmes <curt@tilmes.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Proc-Wait3",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.04"
+         },
+         "name" : "Proc::Wait3",
+         "pathname" : "C/CT/CTILMES/Proc-Wait3-0.04.tar.gz",
+         "provides" : {
+            "Proc::Wait3" : {
+               "file" : "Proc/Wait3.pm",
+               "version" : "0.04"
+            }
+         },
+         "target" : "Proc::Wait3",
+         "version" : "0.04"
+      },
+      "Proclet" : {
+         "dist" : "Proclet-0.19",
+         "mymeta" : {
+            "abstract" : "minimalistic Supervisor",
+            "author" : [
+               "Masahiro Nagano <kazeburo {at} gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Proclet",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t",
+                  "xt"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.36",
+                     "Parallel::Scoreboard" : 0,
+                     "Test::More" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.36"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Data::Validator" : 0,
+                     "Getopt::Compact::WithCmd" : "0.2",
+                     "Log::Minimal" : 0,
+                     "Mouse" : 0,
+                     "Parallel::Prefork" : "0.13",
+                     "Term::ANSIColor" : 0,
+                     "YAML::XS" : "0.38",
+                     "parent" : 0
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ],
+               "repository" : {
+                  "url" : "https://github.com/kazeburo/Proclet.git"
+               }
+            },
+            "version" : "0.19"
+         },
+         "name" : "Proclet",
+         "pathname" : "K/KA/KAZEBURO/Proclet-0.19.tar.gz",
+         "provides" : {
+            "Proclet" : {
+               "file" : "Proclet.pm",
+               "version" : "0.19"
+            },
+            "Proclet::Declare" : {
+               "file" : "Proclet/Declare.pm"
+            }
+         },
+         "target" : "Proclet",
+         "version" : "0.19"
+      },
       "Router::Simple" : {
          "dist" : "Router-Simple-0.14",
          "mymeta" : {
@@ -9874,6 +10302,60 @@
          },
          "target" : "SQL::Interp",
          "version" : "1.21"
+      },
+      "Scope::Guard" : {
+         "dist" : "Scope-Guard-0.20",
+         "mymeta" : {
+            "abstract" : "lexically-scoped resource management",
+            "author" : [
+               "chocolateboy <chocolate@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Scope-Guard",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "Test::More" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "perl" : "5.006001"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.20"
+         },
+         "name" : "Scope::Guard",
+         "pathname" : "C/CH/CHOCOLATE/Scope-Guard-0.20.tar.gz",
+         "provides" : {
+            "Scope::Guard" : {
+               "file" : "Scope/Guard.pm",
+               "version" : "0.20"
+            }
+         },
+         "target" : "Scope::Guard",
+         "version" : "0.20"
       },
       "Starman" : {
          "dist" : "Starman-0.3006",
@@ -11940,6 +12422,79 @@
          "target" : "Test::NoWarnings",
          "version" : "1.04"
       },
+      "Test::Output" : {
+         "dist" : "Test-Output-1.01",
+         "mymeta" : {
+            "abstract" : "Utilities to test STDOUT and STDERR messages.",
+            "author" : [
+               "brian d foy <bdfoy@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.55_02, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "keywords" : [
+               "testing",
+               "STDOUT",
+               "STDERR"
+            ],
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Test-Output",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "File::Temp" : "0.17",
+                     "Sub::Exporter" : 0,
+                     "Test::More" : 0,
+                     "Test::Tester" : "0.107",
+                     "perl" : "5.006"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "repository" : {
+                  "type" : "git",
+                  "url" : "git://github.com/briandfoy/test-output.git"
+               }
+            },
+            "version" : "1.01"
+         },
+         "name" : "Test::Output",
+         "pathname" : "B/BD/BDFOY/Test-Output-1.01.tar.gz",
+         "provides" : {
+            "Test::Output" : {
+               "file" : "Test/Output.pm",
+               "version" : "1.01"
+            },
+            "Test::Output::Tie" : {
+               "file" : "Test/Output/Tie.pm",
+               "version" : "1.01"
+            }
+         },
+         "target" : "Test::Output",
+         "version" : "1.01"
+      },
       "Test::Pod" : {
          "dist" : "Test-Pod-1.45",
          "mymeta" : {
@@ -12568,6 +13123,67 @@
          "target" : "Test::Warn",
          "version" : "0.24"
       },
+      "Text::Aligner" : {
+         "dist" : "Text-Aligner-0.07",
+         "mymeta" : {
+            "abstract" : "Align text in columns",
+            "author" : [
+               "Anno Siegel (siegel@zrz.tu-berlin.de)"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Text-Aligner",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : 0
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Term::ANSIColor" : "2.01",
+                     "Test::More" : 0
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.07"
+         },
+         "name" : "Text::Aligner",
+         "pathname" : "A/AN/ANNO/Text-Aligner-0.07.tar.gz",
+         "provides" : {
+            "Text::Aligner" : {
+               "file" : "Text/Aligner.pm",
+               "version" : "0.07"
+            },
+            "Text::Aligner::Auto" : {
+               "file" : "Text/Aligner.pm"
+            },
+            "Text::Aligner::MaxKeeper" : {
+               "file" : "Text/Aligner.pm"
+            }
+         },
+         "target" : "Text::Aligner",
+         "version" : "0.07"
+      },
       "Text::Diff" : {
          "dist" : "Text-Diff-1.41",
          "mymeta" : {
@@ -12705,6 +13321,81 @@
          },
          "target" : "Text::MicroTemplate",
          "version" : "0.19"
+      },
+      "Text::Table" : {
+         "dist" : "Text-Table-1.126",
+         "mymeta" : {
+            "abstract" : "Organize Data in Tables",
+            "author" : [
+               "Shlomi Fish <shlomif@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112621",
+            "keywords" : [
+               "art",
+               "ascii",
+               "asciiart",
+               "borders",
+               "table",
+               "text",
+               "unicode"
+            ],
+            "license" : [
+               "bsd"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Text-Table",
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "List::Util" : 0,
+                     "Test::More" : 0
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "Module::Build" : "0.36"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Text::Aligner" : "0.05",
+                     "strict" : 0,
+                     "warnings" : 0
+                  }
+               }
+            },
+            "provides" : {
+               "Text::Table" : {
+                  "file" : "lib/Text/Table.pm",
+                  "version" : "1.126"
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "homepage" : "http://www.shlomifish.org/open-source/projects/docmake/",
+               "license" : [
+                  "http://www.opensource.org/licenses/bsd-license.php"
+               ],
+               "repository" : {
+                  "url" : "https://github.com/shlomif/Text-Table"
+               }
+            },
+            "version" : "1.126"
+         },
+         "name" : "Text::Table",
+         "pathname" : "S/SH/SHLOMIF/Text-Table-1.126.tar.gz",
+         "provides" : {
+            "Text::Table" : {
+               "file" : "Text/Table.pm",
+               "version" : "1.126"
+            }
+         },
+         "target" : "Text::Table",
+         "version" : "1.126"
       },
       "Text::Xslate" : {
          "dist" : "Text-Xslate-1.6002",
