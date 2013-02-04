@@ -15,6 +15,16 @@ my $user = '';
 set application => $application;
 set repository  => "https://github.com/kazuph/$application.git";
 
+role localhost => [ 'localhost' ], {
+    deploy_to   => ".",
+    branch      => 'master',
+};
+
+role development => [ $server ], {
+    deploy_to   => "/home/$user/$application",
+    branch      => 'master',
+};
+
 role production => [ $server ], {
     deploy_to   => "/home/$user/$application",
     branch      => 'master',
@@ -78,5 +88,16 @@ task carton => {
         remote {
             run ". ~/perl5/perlbrew/etc/bashrc && cd $deploy_to && carton install";
         } $host;
+    },
+};
+
+task localhost => {
+    cpaninstall => sub {
+        my ($host, @args) = @_;
+        run "./bin/cpaninstall.sh";
+    },
+    start => sub {
+        my ($host, @args) = @_;
+        run "./bin/run_dev.sh";
     },
 };
