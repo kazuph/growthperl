@@ -4,13 +4,19 @@ use warnings;
 use utf8;
 use Cinnamon::DSL;
 
-set application => 'myapp';
-set repository  => 'git@github.com:naoya/myapp.git';
-set user        => 'fiorung';
-set password    => '';
+# command
+# $ cinnamon production deploy:update
+# $ cinnamon production server:restart
 
-role development => ['myapp-development.ap-northeast-1'], {
-    deploy_to   => '/home/fiorung/apps/myapp',
+my $application = 'PerlPad';
+my $server = '';
+my $user = '';
+
+set application => $application;
+set repository  => "https://github.com/kazuph/$application.git";
+
+role production => [ $server ], {
+    deploy_to   => "/home/$user/$application",
     branch      => 'master',
 };
 
@@ -37,27 +43,31 @@ task deploy  => {
 task server => {
     start => sub {
         my ($host, @args) = @_;
+        my $application_lc = lc $application;
         remote {
-            sudo "supervisorctl start myapp";
-        } $host;
+            run "supervisorctl start $application_lc";
+        } $host.'-root';
     },
     stop => sub {
         my ($host, @args) = @_;
+        my $application_lc = lc $application;
         remote {
-            sudo "supervisorctl stop myapp";
-        } $host;
+            run "supervisorctl stop $application_lc";
+        } $host.'-root';
     },
     restart => sub {
         my ($host, @args) = @_;
+        my $application_lc = lc $application;
         remote {
-            run "kill -HUP `cat /tmp/myapp.pid`";
-        } $host;
+            # run "kill -HUP `cat /tmp/myapp.pid`";
+            run "supervisorctl restart $application_lc";
+        } $host.'-root';
     },
     status => sub {
         my ($host, @args) = @_;
         remote {
-            sudo "supervisorctl status";
-        } $host;
+            run "supervisorctl status";
+        } $host.'-root';
     },
 };
 
