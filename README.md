@@ -1,12 +1,23 @@
 # PerlPad
-
 ## install app
 ```
+$ git clone https://github.com/kazuph/PerlPad.git
+$ cd PerlPad
 $ sudo yum groupinstall "Development Tools"
 $ curl -L http://cpanmin.us | perl - --sudo App::cpanminus
-$ ./install_cpan.sh
-$ ./postinstall
-# run
+$ ./bin/install_cpan.sh
+$ ./bin/postinstall
+```
+## run application
+### for development
+```
+$ perl -Mlib=extlib/lib/perl5 extlib/bin/plackup -s Starman app.psgi
+or
+$ ./bin/run_server_for_development.sh
+```
+
+### for development
+```
 $ perl -Mlib=extlib/lib/perl5 extlib/bin/plackup -s Starman -E deployment --preload-app --disable-keepalive --workers 10 app.psgi
 ```
 
@@ -79,7 +90,3 @@ mkdir /var/log/PerlPad/nginx
 cd config/problems/
 ln -s problem_sample.yml problem.yml
 ```
-
-## TODO
-* add user_name to db.
-* make only one page in user page.

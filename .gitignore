@@ -1,4 +1,6 @@
 Makefile
+.carton
+local
 inc/
 MANIFEST
 *.bak

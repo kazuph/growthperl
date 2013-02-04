@@ -1,3 +1,6 @@
 #!/bin/sh
-cpanm -Lextlib -n --installdeps .
+cpanm carton
+carton install
+# cpanm -Lextlib -n --installdeps .
 cpanm Test::Pretty
+cpanm Proclet

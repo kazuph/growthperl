@@ -1,5 +1,8 @@
 #!/bin/sh
-
 echo "setup database"
-sqlite3 development.db < sql/sqlite.sql
-
+if [ ! -d db ]
+then
+    echo "make dir db"
+    mkdir db
+fi
+sqlite3 db/development.db < sql/sqlite.sql

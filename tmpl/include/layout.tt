@@ -4,8 +4,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[% title || 'PerlPad' %]</title>
-    <meta http-equiv="Content-Style-Type" content="text/css" />  
-    <meta http-equiv="Content-Script-Type" content="text/javascript" />  
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"]]>
     <meta name="format-detection" content="telephone=no" />
     <link href="[% uri_for('/static/css/bootstrap.min.css') %]" rel="stylesheet" type="text/css" media="screen" />
@@ -17,6 +17,12 @@
     <![endif]-->
     <link href="[% uri_for('/static/js/google-code-prettify/prettify.css') %]" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="[% uri_for('/static/js/google-code-prettify/prettify.js') %]"></script>
+    <script type="text/javascript" src="[% uri_for('/static/js/jquery.textarea.js') %]"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function () {
+        $("textarea.tabby").tabby();
+      });
+    </script>
   </head>
   <body[% IF bodyID %] class="[% bodyID %]"[% END %] onload="prettyPrint()">
     <div class="container-fluid">
@@ -42,7 +48,7 @@
       <footer>
         <small>
           Powered by <a href="http://amon.64p.org/">Amon2</a>
-        </small> 
+        </small>
       </footer>
     </div>
   </body>
