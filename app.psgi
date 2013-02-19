@@ -40,7 +40,7 @@ builder {
         state => Plack::Session::State::Cookie->new(
             httponly => 1,
         );
-    enable "Auth::Basic",  authenticator => \&authen_cb;
+    enable_if { $ENV{PLACK_ENV} ne 'development' } "Auth::Basic",  authenticator => \&authen_cb;
     enable 'AxsLog', response_time => 1, error_only => 0;
     enable 'Log::Minimal', autodump => 1;
     PerlPad::Web->to_app();
