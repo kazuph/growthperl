@@ -1,4 +1,4 @@
-package PerlPad::Web::Dispatcher;
+package GrowthPerl::Web::Dispatcher;
 use strict;
 use warnings;
 use utf8;
@@ -38,7 +38,7 @@ any '/' => sub {
             user_name => $c->req->env->{REMOTE_USER},
             entries   => $entries,
             problems  => $c->config->{PROBLEMS},
-            problem_id => -1, 
+            problem_id => -1,
         });
 };
 
@@ -77,7 +77,7 @@ post '/post' => sub {
         eval{
             ($stdout, $run_time) = &eval_body($body);
             $stdout =~ s/\(eval \d+?\) //g;
-            $stdout =~ s/PerlPad::Web::Dispatcher:://g;
+            $stdout =~ s/GrowthPerl::Web::Dispatcher:://g;
 
             $c->dbh->insert(
                 entry => {

@@ -1,14 +1,14 @@
-package PerlPad::Web;
+package GrowthPerl::Web;
 use strict;
 use warnings;
 use utf8;
-use parent qw/PerlPad Amon2::Web/;
+use parent qw/GrowthPerl Amon2::Web/;
 use File::Spec;
 
 # dispatcher
-use PerlPad::Web::Dispatcher;
+use GrowthPerl::Web::Dispatcher;
 sub dispatch {
-    return PerlPad::Web::Dispatcher->dispatch($_[0]) or die "response is not generated";
+    return GrowthPerl::Web::Dispatcher->dispatch($_[0]) or die "response is not generated";
 }
 
 # setup view class

@@ -8,7 +8,7 @@ use Cinnamon::DSL;
 # $ cinnamon production deploy:update
 # $ cinnamon production server:restart
 
-my $application = 'PerlPad';
+my $application = 'GrowthPerl';
 my $server = '';
 my $user = '';
 

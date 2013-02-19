@@ -38,11 +38,11 @@ sub slurp {
 }
 
 # initialize database
-use PerlPad;
+use GrowthPerl;
 {
     unlink 'db/test.db' if -f 'db/test.db';
 
-    my $c = PerlPad->new();
+    my $c = GrowthPerl->new();
     $c->setup_schema();
 }
 

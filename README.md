@@ -1,8 +1,8 @@
-# PerlPad
+# GrowthPerl
 ## install app
 ```
-$ git clone https://github.com/kazuph/PerlPad.git
-$ cd PerlPad
+$ git clone https://github.com/kazuph/GrowthPerl.git
+$ cd GrowthPerl
 $ sudo yum groupinstall "Development Tools"
 $ curl -L http://cpanmin.us | perl - --sudo App::cpanminus
 $ ./bin/install_cpan.sh
@@ -33,12 +33,12 @@ $ perl -Mlib=extlib/lib/perl5 extlib/bin/plackup -s Starman -E deployment --prel
 ```
 # mkdir /var/log/supervisor
 # mkdir /etc/supervisord.d
-# mkdir /var/log/PerlPad
+# mkdir /var/log/GrowthPerl
 ```
 
 ### set config
 ```
-# cp -p /home/homepage/PerlPad/etc/supervisord.conf /etc/supervisord.conf
+# cp -p /home/homepage/GrowthPerl/etc/supervisord.conf /etc/supervisord.conf
 ```
 
 ### set initctl
@@ -70,13 +70,13 @@ exec /usr/bin/supervisord -n
 ```
 # cd /etc/nginx
 # cp nginx.conf nginx.conf.org
-# cp /home/homepage/PerlPad/config/nginx/nginx.conf nginx.conf
-# cp /home/homepage/PerlPad/config/nginx/perlpad.conf conf.d/
+# cp /home/homepage/GrowthPerl/config/nginx/nginx.conf nginx.conf
+# cp /home/homepage/GrowthPerl/config/nginx/perlpad.conf conf.d/
 ```
 
 ## make directory
 ```
-mkdir /var/log/PerlPad/nginx
+mkdir /var/log/GrowthPerl/nginx
 ```
 
 ### start nginx

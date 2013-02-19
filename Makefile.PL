@@ -1,9 +1,9 @@
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME          => 'PerlPad',
+    NAME          => 'GrowthPerl',
     AUTHOR        => 'Kazuhiro Homma',
-    VERSION_FROM  => 'lib/PerlPad.pm',
+    VERSION_FROM  => 'lib/GrowthPerl.pm',
     PREREQ_PM     => {
         'Amon2'                           => '3.32',
         'Amon2::DBI'                      => '0.06',

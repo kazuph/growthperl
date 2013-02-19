@@ -1,4 +1,4 @@
-package PerlPad;
+package GrowthPerl;
 use strict;
 use warnings;
 use utf8;
