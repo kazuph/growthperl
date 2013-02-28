@@ -4191,6 +4191,58 @@
          "target" : "IO::HTML",
          "version" : "0.04"
       },
+      "IO::String" : {
+         "dist" : "IO-String-1.08",
+         "mymeta" : {
+            "abstract" : "unknown",
+            "author" : [
+               "unknown"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120630",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "IO-String",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "0"
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "0"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "1.08"
+         },
+         "name" : "IO::String",
+         "pathname" : "G/GA/GAAS/IO-String-1.08.tar.gz",
+         "provides" : {
+            "IO::String" : {
+               "file" : "IO/String.pm",
+               "version" : "1.08"
+            }
+         },
+         "target" : "IO::String",
+         "version" : "1.08"
+      },
       "IO::Stringy" : {
          "dist" : "IO-stringy-2.110",
          "mymeta" : {
@@ -6279,6 +6331,73 @@
          "target" : "Plack::Middleware::ReverseProxy",
          "version" : "0.15"
       },
+      "Plack::Middleware::Scope::Container" : {
+         "dist" : "Plack-Middleware-Scope-Container-0.03",
+         "mymeta" : {
+            "abstract" : "per-request container ",
+            "author" : [
+               "Masahiro Nagano <kazeburo {at} gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120630",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Plack-Middleware-Scope-Container",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t",
+                  "xt"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.36",
+                     "Test::More" : "0"
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.36"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Plack" : "0.9982",
+                     "Scope::Container" : "0.03",
+                     "parent" : "0"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ],
+               "repository" : {
+                  "type" : "git",
+                  "url" : "git://github.com/kazeburo/Plack-Middleware-Scope-Container.git"
+               }
+            },
+            "version" : "0.03"
+         },
+         "name" : "Plack::Middleware::Scope::Container",
+         "pathname" : "K/KA/KAZEBURO/Plack-Middleware-Scope-Container-0.03.tar.gz",
+         "provides" : {
+            "Plack::Middleware::Scope::Container" : {
+               "file" : "Plack/Middleware/Scope/Container.pm",
+               "version" : "0.03"
+            }
+         },
+         "target" : "Plack::Middleware::Scope::Container",
+         "version" : "0.03"
+      },
       "Plack::Middleware::Session" : {
          "dist" : "Plack-Middleware-Session-0.15",
          "mymeta" : {
@@ -6381,6 +6500,64 @@
          },
          "target" : "Plack::Session",
          "version" : "0.15"
+      },
+      "Plack::Session::Store::Redis" : {
+         "dist" : "Plack-Session-Store-Redis-0.03",
+         "mymeta" : {
+            "abstract" : "Redis based session store for Plack apps.",
+            "author" : [
+               "Lee Aylward <leedo@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120630",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Plack-Session-Store-Redis",
+            "no_index" : {
+               "directory" : [
+                  "t",
+                  "inc"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "0"
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "0"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "JSON" : "0",
+                     "Plack" : "0",
+                     "Plack::Session" : "0",
+                     "Redis" : "0",
+                     "Test::More" : "0"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.03"
+         },
+         "name" : "Plack::Session::Store::Redis",
+         "pathname" : "L/LE/LEEDO/Plack-Session-Store-Redis-0.03.tar.gz",
+         "provides" : {
+            "Plack::Session::Store::Redis" : {
+               "file" : "Plack/Session/Store/Redis.pm",
+               "version" : "0.03"
+            }
+         },
+         "target" : "Plack::Session::Store::Redis",
+         "version" : "0.03"
       },
       "Proc::Wait3" : {
          "dist" : "Proc-Wait3-0.04",
@@ -6508,6 +6685,434 @@
          },
          "target" : "Proclet",
          "version" : "0.19"
+      },
+      "Redis" : {
+         "dist" : "Redis-1.961",
+         "mymeta" : {
+            "abstract" : "Perl binding for Redis database",
+            "author" : [
+               "Pedro Melo <melo@cpan.org>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.120630",
+            "license" : [
+               "artistic_2"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Redis",
+            "no_index" : {
+               "directory" : [
+                  "corpus",
+                  "examples",
+                  "inc",
+                  "share",
+                  "t",
+                  "xt"
+               ],
+               "namespace" : [
+                  "Local",
+                  "t::lib"
+               ],
+               "package" : [
+                  "DB"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "Digest::SHA" : "0",
+                     "IO::String" : "0",
+                     "IPC::Cmd" : "0",
+                     "Test::Deep" : "0",
+                     "Test::Fatal" : "0",
+                     "Test::More" : "0.98"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Try::Tiny" : "0"
+                  }
+               }
+            },
+            "provides" : {
+               "Redis" : {
+                  "file" : "lib/Redis.pm",
+                  "version" : "1.961"
+               },
+               "Redis::Hash" : {
+                  "file" : "lib/Redis/Hash.pm",
+                  "version" : "1.961"
+               },
+               "Redis::List" : {
+                  "file" : "lib/Redis/List.pm",
+                  "version" : "1.961"
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "bugtracker" : {
+                  "web" : "https://github.com/melo/perl-redis/issues"
+               },
+               "homepage" : "http://metacpan.org/release/Redis/",
+               "repository" : {
+                  "type" : "git",
+                  "url" : "git://github.com/melo/perl-redis.git"
+               }
+            },
+            "version" : "1.961",
+            "x_Dist_Zilla" : {
+               "perl" : {
+                  "version" : "5.014002"
+               },
+               "plugins" : [
+                  {
+                     "class" : "Dist::Zilla::Plugin::GitHub::Meta",
+                     "name" : "@Author::MELO/@GitHub/GitHub::Meta",
+                     "version" : "0.30"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::GitHub::Update",
+                     "name" : "@Author::MELO/@GitHub/GitHub::Update",
+                     "version" : "0.30"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Git::NextVersion",
+                     "name" : "@Author::MELO/Git::NextVersion",
+                     "version" : "2.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::GenerateFile",
+                     "name" : "@Author::MELO/GenerateManifestSkip",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::GenerateFile",
+                     "name" : "@Author::MELO/GenerateTravisCfg",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::GatherDir",
+                     "name" : "@Author::MELO/GatherDir",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::PruneCruft",
+                     "name" : "@Author::MELO/PruneCruft",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::ManifestSkip",
+                     "name" : "@Author::MELO/ManifestSkip",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::PruneFiles",
+                     "name" : "@Author::MELO/PruneRepoMetaFiles",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Authority",
+                     "name" : "@Author::MELO/Authority",
+                     "version" : "1.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::NextRelease",
+                     "name" : "@Author::MELO/NextRelease",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::OurPkgVersion",
+                     "name" : "@Author::MELO/OurPkgVersion",
+                     "version" : "0.004000"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::PodWeaver",
+                     "name" : "@Author::MELO/PodWeaver",
+                     "version" : "3.101641"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::License",
+                     "name" : "@Author::MELO/License",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Readme",
+                     "name" : "@Author::MELO/Readme",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::AutoPrereqs",
+                     "name" : "@Author::MELO/AutoPrereqs",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MetaNoIndex",
+                     "name" : "@Author::MELO/MetaNoIndex",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MetaProvides::Package",
+                     "name" : "@Author::MELO/MetaProvides::Package",
+                     "version" : "1.14000001"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MetaConfig",
+                     "name" : "@Author::MELO/MetaConfig",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MetaYAML",
+                     "name" : "@Author::MELO/MetaYAML",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MetaJSON",
+                     "name" : "@Author::MELO/MetaJSON",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Prereqs",
+                     "config" : {
+                        "Dist::Zilla::Plugin::Prereqs" : {
+                           "phase" : "test",
+                           "type" : "requires"
+                        }
+                     },
+                     "name" : "@Author::MELO/TestMoreWithSubtests",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::ExecDir",
+                     "name" : "@Author::MELO/ExecDir",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::ShareDir",
+                     "name" : "@Author::MELO/ShareDir",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MakeMaker",
+                     "name" : "@Author::MELO/MakeMaker",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::Pod::No404s",
+                     "name" : "@Author::MELO/Test::Pod::No404s",
+                     "version" : "1.001"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::UnusedVars",
+                     "name" : "@Author::MELO/@TestingMania/Test::UnusedVars",
+                     "version" : "2.000003"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::Synopsis",
+                     "name" : "@Author::MELO/@TestingMania/Test::Synopsis",
+                     "version" : "2.000002"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::Version",
+                     "name" : "@Author::MELO/@TestingMania/Test::Version",
+                     "version" : "0.002004"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::PodCoverageTests",
+                     "name" : "@Author::MELO/@TestingMania/PodCoverageTests",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::CPAN::Changes",
+                     "name" : "@Author::MELO/@TestingMania/Test::CPAN::Changes",
+                     "version" : "0.005"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON",
+                     "name" : "@Author::MELO/@TestingMania/Test::CPAN::Meta::JSON",
+                     "version" : "0.003"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::DistManifest",
+                     "name" : "@Author::MELO/@TestingMania/Test::DistManifest",
+                     "version" : "2.000002"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MetaTests",
+                     "name" : "@Author::MELO/@TestingMania/MetaTests",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::Compile",
+                     "name" : "@Author::MELO/@TestingMania/Test::Compile",
+                     "version" : "1.112820"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::Kwalitee",
+                     "name" : "@Author::MELO/@TestingMania/Test::Kwalitee",
+                     "version" : "2.03"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::NoTabsTests",
+                     "name" : "@Author::MELO/@TestingMania/NoTabsTests",
+                     "version" : "0.01"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::MinimumVersion",
+                     "name" : "@Author::MELO/@TestingMania/Test::MinimumVersion",
+                     "version" : "2.000002"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::Pod::LinkCheck",
+                     "name" : "@Author::MELO/@TestingMania/Test::Pod::LinkCheck",
+                     "version" : "1.001"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Test::EOL",
+                     "name" : "@Author::MELO/@TestingMania/Test::EOL",
+                     "version" : "0.07"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::PodSyntaxTests",
+                     "name" : "@Author::MELO/@TestingMania/PodSyntaxTests",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::MojibakeTests",
+                     "name" : "@Author::MELO/@TestingMania/MojibakeTests",
+                     "version" : "0.3"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Manifest",
+                     "name" : "@Author::MELO/Manifest",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::CheckExtraTests",
+                     "name" : "@Author::MELO/CheckExtraTests",
+                     "version" : "0.007"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::CheckChangesHasContent",
+                     "name" : "@Author::MELO/CheckChangesHasContent",
+                     "version" : "0.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::TestRelease",
+                     "name" : "@Author::MELO/TestRelease",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::ConfirmRelease",
+                     "name" : "@Author::MELO/ConfirmRelease",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::UploadToCPAN",
+                     "name" : "@Author::MELO/UploadToCPAN",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Git::CommitBuild",
+                     "name" : "@Author::MELO/Git::CommitBuild",
+                     "version" : "2.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Git::Check",
+                     "name" : "@Author::MELO/@Git/Check",
+                     "version" : "2.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Git::Commit",
+                     "name" : "@Author::MELO/@Git/Commit",
+                     "version" : "2.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Git::Tag",
+                     "name" : "@Author::MELO/@Git/Tag",
+                     "version" : "2.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Git::Push",
+                     "name" : "@Author::MELO/@Git/Push",
+                     "version" : "2.006"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::InstallRelease",
+                     "name" : "@Author::MELO/InstallRelease",
+                     "version" : "0.008"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::PrereqsClean",
+                     "name" : "@Author::MELO/PrereqsClean",
+                     "version" : "0.92"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::Clean",
+                     "name" : "@Author::MELO/Clean",
+                     "version" : "0.07"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":InstallModules",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":IncModules",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":TestFiles",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":ExecFiles",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":ShareFiles",
+                     "version" : "4.300028"
+                  },
+                  {
+                     "class" : "Dist::Zilla::Plugin::FinderCode",
+                     "name" : ":MainModule",
+                     "version" : "4.300028"
+                  }
+               ],
+               "zilla" : {
+                  "class" : "Dist::Zilla::Dist::Builder",
+                  "config" : {
+                     "is_trial" : "0"
+                  },
+                  "version" : "4.300028"
+               }
+            },
+            "x_authority" : "cpan:MELO"
+         },
+         "name" : "Redis",
+         "pathname" : "M/ME/MELO/Redis-1.961.tar.gz",
+         "provides" : {
+            "Redis" : {
+               "file" : "Redis.pm",
+               "version" : "1.961"
+            },
+            "Redis::Hash" : {
+               "file" : "Redis/Hash.pm",
+               "version" : "1.961"
+            },
+            "Redis::List" : {
+               "file" : "Redis/List.pm",
+               "version" : "1.961"
+            }
+         },
+         "target" : "Redis",
+         "version" : "1.961"
       },
       "Router::Simple" : {
          "dist" : "Router-Simple-0.14",
@@ -6765,6 +7370,145 @@
          },
          "target" : "SQL::Interp",
          "version" : "1.21"
+      },
+      "Scope::Container" : {
+         "dist" : "Scope-Container-0.04",
+         "mymeta" : {
+            "abstract" : "scope based container",
+            "author" : [
+               "Masahiro Nagano <kazeburo {at} gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120630",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Scope-Container",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t",
+                  "xt"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42",
+                     "Test::More" : "0.88"
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.42"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "perl" : "5.008001"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ],
+               "repository" : {
+                  "type" : "git",
+                  "url" : "git://github.com/kazeburo/Scope-Container.git"
+               }
+            },
+            "version" : "0.04"
+         },
+         "name" : "Scope::Container",
+         "pathname" : "K/KA/KAZEBURO/Scope-Container-0.04.tar.gz",
+         "provides" : {
+            "Scope::Container" : {
+               "file" : "Scope/Container.pm",
+               "version" : "0.04"
+            }
+         },
+         "target" : "Scope::Container",
+         "version" : "0.04"
+      },
+      "Scope::Container::DBI" : {
+         "dist" : "Scope-Container-DBI-0.08",
+         "mymeta" : {
+            "abstract" : "DB connection manager with Scope::Container",
+            "author" : [
+               "Masahiro Nagano <kazeburo {at} gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120630",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Scope-Container-DBI",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t",
+                  "xt"
+               ]
+            },
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "DBD::SQLite" : "0",
+                     "ExtUtils::MakeMaker" : "6.36",
+                     "File::Temp" : "0",
+                     "Test::More" : "0",
+                     "Test::SharedFork" : "0"
+                  }
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.36"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "DBI" : "1.615",
+                     "Data::Dumper" : "0",
+                     "List::Util" : "0",
+                     "Log::Minimal" : "0",
+                     "Module::Load" : "0",
+                     "Scope::Container" : "0.04",
+                     "Try::Tiny" : "0.11"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ],
+               "repository" : {
+                  "type" : "git",
+                  "url" : "git://github.com/kazeburo/Scope-Container-DBI.git"
+               }
+            },
+            "version" : "0.08"
+         },
+         "name" : "Scope::Container::DBI",
+         "pathname" : "K/KA/KAZEBURO/Scope-Container-DBI-0.08.tar.gz",
+         "provides" : {
+            "Scope::Container::DBI" : {
+               "file" : "Scope/Container/DBI.pm",
+               "version" : "0.08"
+            }
+         },
+         "target" : "Scope::Container::DBI",
+         "version" : "0.08"
       },
       "Scope::Guard" : {
          "dist" : "Scope-Guard-0.20",
