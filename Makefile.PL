@@ -23,6 +23,8 @@ WriteMakefile(
         'Plack::Middleware::Scope::Container' => '0.03',
         'Plack::Session::Store::Redis'        => '0.03',
         'Plack::Session'                      => '0.14',
+        'Cache::Memcached::Fast'              => '0.19',
+        'Data::MessagePack'                   => '0.46',
         'Scope::Container::DBI'               => '0.08',
         'Starman'                             => '0.3005',
         'String::CamelCase'                   => '0.02',

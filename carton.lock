@@ -496,6 +496,49 @@
          "target" : "Any::Moose",
          "version" : "0.20"
       },
+      "Cache::Memcached::Fast" : {
+         "dist" : "Cache-Memcached-Fast-0.19",
+         "mymeta" : {
+            "abstract" : "Perl client for B<memcached>, in C language",
+            "author" : [
+               "Tomash Brechko <tomash.brechko@gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "ExtUtils::MakeMaker version 6.42, CPAN::Meta::Converter version 2.120630",
+            "license" : [
+               "unknown"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Cache-Memcached-Fast",
+            "prereqs" : {
+               "build" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "0"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {
+                     "Test::More" : "0"
+                  }
+               }
+            },
+            "release_status" : "stable",
+            "version" : "0.19"
+         },
+         "name" : "Cache::Memcached::Fast",
+         "pathname" : "K/KR/KROKI/Cache-Memcached-Fast-0.19.tar.gz",
+         "provides" : {
+            "Cache::Memcached::Fast" : {
+               "file" : "Cache/Memcached/Fast.pm",
+               "version" : "0.19"
+            }
+         },
+         "target" : "Cache::Memcached::Fast",
+         "version" : "0.19"
+      },
       "Carp::Assert" : {
          "dist" : "Carp-Assert-0.20",
          "mymeta" : {
