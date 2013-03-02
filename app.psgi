@@ -44,6 +44,7 @@ builder {
     enable "Auth::Basic", authenticator => \&authen_cb;
     enable 'AxsLog', response_time => 1, error_only => 0;
     enable 'Log::Minimal', autodump => 1;
+    enable "Plack::Middleware::Profiler::KYTProf";
     GrowthPerl::Web->to_app();
 };
 
