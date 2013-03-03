@@ -6,15 +6,20 @@ use File::Basename;
 use lib File::Spec->catdir(dirname(__FILE__), 'extlib', 'lib', 'perl5');
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
 use Plack::Builder;
-
 use GrowthPerl::Web;
 use GrowthPerl;
-use Plack::Session::Store::DBI;
-use Plack::Session::State::Cookie;
+# use Plack::Session::Store::DBI;
+# use Plack::Session::Store::Redis;
+# use Plack::Session::State::Cookie;
+# use Plack::Session::Store::Cache;
+# use Cache::Memcached::Fast;
+# use Data::MessagePack;
 use DBI;
 use YAML::XS;
 use Log::Minimal;
 use Data::Dump qw/dump/;
+use Scope::Container::DBI;
+use Scope::Container;
 
 {
     my $c = GrowthPerl->new();
@@ -26,23 +31,21 @@ builder {
     enable 'Plack::Middleware::Static',
     path => qr{^(?:/static/)},
     root => File::Spec->catdir(dirname(__FILE__));
-    enable 'Plack::Middleware::Static',
     path => qr{^(?:/robots\.txt|/favicon\.ico)$},
     root => File::Spec->catdir(dirname(__FILE__), 'static');
     enable 'Plack::Middleware::ReverseProxy';
-    enable 'Plack::Middleware::Session',
-        store => Plack::Session::Store::DBI->new(
-            get_dbh => sub {
-                DBI->connect( @$db_config )
-                    or die $DBI::errstr;
-            }
-        ),
-        state => Plack::Session::State::Cookie->new(
-            httponly => 1,
-        );
-    # enable_if { $ENV{PLACK_ENV} ne 'development' } "Auth::Basic",  authenticator => \&authen_cb;
-    enable "Auth::Basic", authenticator => \&authen_cb;
-    enable 'AxsLog', response_time => 1, error_only => 0;
+    # enable 'Session', store => 'Redis',
+    # enable 'Session', store => Plack::Session::Store::Cache->new(
+    #     cache => Cache::Memcached::Fast->new({
+    #             servers => [{address => 'localhost:11211'}],
+    #             serialize_methods => [ sub { Data::MessagePack->pack(+shift)},  sub {Data::MessagePack->unpack(+shift)} ],
+    #         }),
+    # # );
+    # ),
+#     state => Plack::Session::State::Cookie->new(
+#         session_key => 'sid',
+# #            httponly => 1,
+#     );
     enable 'Log::Minimal', autodump => 1;
     enable "Plack::Middleware::Profiler::KYTProf";
     GrowthPerl::Web->to_app();

@@ -19,7 +19,7 @@ $Data::Dumper::Useperl = 1;
 
 any '/' => sub {
     my ($c) = @_;
-    infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
+    # infof "REMOTE_USER %s", $c->request->env->{REMOTE_USER};
 
     my $entries = $c->dbh->selectall_arrayref(q{SELECT * FROM entry where user_name = ? and problem_id = -1 order by id desc;}, {Slice=>{}}, $c->request->env->{REMOTE_USER});
 
