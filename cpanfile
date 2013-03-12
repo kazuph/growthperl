@@ -14,8 +14,7 @@ requires 'Plack::Middleware::Log::Minimal', 0.06;
 requires 'Plack::Middleware::ReverseProxy', 0.09;
 requires 'Plack::Middleware::Session', 0.15;
 requires 'Plack::Middleware::Scope::Container', 0.03;
-# requires 'Plack::Middleware::Profiler::KYTProf', 0.04;
-requires git://github.com/kazuph/p5-plack-middleware-profiler-kytprof.git
+requires 'Plack::Middleware::Profiler::KYTProf', 0.061;
 requires 'Plack::Session::Store::Redis', 0.03;
 requires 'Plack::Session', 0.14;
 requires 'Cache::Memcached::Fast', 0.19;
