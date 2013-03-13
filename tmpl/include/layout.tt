@@ -17,12 +17,6 @@
     <![endif]-->
     <link href="[% uri_for('/static/js/google-code-prettify/prettify.css') %]" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="[% uri_for('/static/js/google-code-prettify/prettify.js') %]"></script>
-    <script type="text/javascript" src="[% uri_for('/static/js/jquery.textarea.js') %]"></script>
-    <script type="text/javascript">
-      jQuery(document).ready(function () {
-        $("textarea.tabby").tabby();
-      });
-    </script>
   </head>
   <body[% IF bodyID %] class="[% bodyID %]"[% END %] onload="prettyPrint()">
     <div class="container-fluid">
